@@ -1,0 +1,39 @@
+# This file contains metadata for your plugin. Since 
+# version 2.0 of QGIS this is the proper way to supply 
+# information about a plugin. The old method of 
+# embedding metadata in __init__.py will 
+# is no longer supported since version 2.0.
+
+# This file should be included when you package your plugin.# Mandatory items:
+
+[general]
+name=Geo Charge app
+qgisMinimumVersion=2.0
+description=Plugin for cityplanner to choose best charging spot
+version=0.1
+author=J&J
+email=joost_vb1@hotmail.com
+
+about=The planner uses this app to determine the best location for additional charging spots in the future. The app needs data from a navigation app (for example PlugShare) as an input. The planner sees a map with the places where people want to go and the amount of available charging spots (see example picture of application screen below). The planner can see several layers to identify the critical spots to help him decide where to put new charging stations.
+
+tracker=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11
+repository=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11
+# End of mandatory metadata
+
+# Recommended items:
+
+# Uncomment the following line and add your changelog:
+# changelog=
+
+# Tags are comma separated with spaces allowed
+tags=GeoCharge,geo,charge,qgis,cityplanner,electric vehicles,charging spots
+
+homepage=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11
+category=Plugins
+icon=icon.png
+# experimental flag
+experimental=True
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False
+
