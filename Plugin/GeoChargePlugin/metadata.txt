@@ -7,17 +7,17 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=Geo Charge app
+name=Geo Charge Plugin
 qgisMinimumVersion=2.0
-description=Plugin for cityplanner to choose best charging spot
+description=Plugin from J&J
 version=0.1
 author=J&J
-email=joost_vb1@hotmail.com
+email=juampis77@hotmail.com
 
-about=The planner uses this app to determine the best location for additional charging spots in the future. The app needs data from a navigation app (for example PlugShare) as an input. The planner sees a map with the places where people want to go and the amount of available charging spots (see example picture of application screen below). The planner can see several layers to identify the critical spots to help him decide where to put new charging stations.
+about=Nice Plugin to plan new charging spots for electric vehicles
 
-tracker=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11
-repository=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11
+tracker=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11/wiki/GEOCharge
+repository=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11/wiki/GEOCharge
 # End of mandatory metadata
 
 # Recommended items:
@@ -26,13 +26,13 @@ repository=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=GeoCharge,geo,charge,qgis,cityplanner,electric vehicles,charging spots
+tags=
 
-homepage=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11
+homepage=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11/wiki/GEOCharge
 category=Plugins
 icon=icon.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False

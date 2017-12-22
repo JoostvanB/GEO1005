@@ -1,12 +1,12 @@
 #/***************************************************************************
 # GeoChargePlugin
 #
-# Plugin for cityplanner to choose best charging spot
+# Plugin from J&J
 #							 -------------------
-#		begin				: 2017-12-12
+#		begin				: 2017-12-22
 #		git sha				: $Format:%H$
 #		copyright			: (C) 2017 by J&J
-#		email				: joost_vb1@hotmail.com
+#		email				: juampis77@hotmail.com
 # ***************************************************************************/
 #
 #/***************************************************************************
@@ -38,15 +38,15 @@ LOCALES =
 # translation
 SOURCES = \
 	__init__.py \
-	geo_charge_module.py geo_charge_module_dialog.py
+	Geo_Charge_plugin.py Geo_Charge_plugin_dockwidget.py
 
 PLUGINNAME = GeoChargePlugin
 
 PY_FILES = \
 	__init__.py \
-	geo_charge_module.py geo_charge_module_dialog.py
+	Geo_Charge_plugin.py Geo_Charge_plugin_dockwidget.py
 
-UI_FILES = geo_charge_module_dialog_base.ui
+UI_FILES = Geo_Charge_plugin_dockwidget_base.ui
 
 EXTRAS = metadata.txt icon.png
 

@@ -1,10 +1,10 @@
 Plugin Builder Results
 
 Your plugin GeoChargePlugin was created in:
-    C:\Users\joost\Documents\git\GEO1005-GeoCharge-Group-11\Plugin\GeoChargePlugin
+    C:\Users\JuanDavid\Documents\GitHub\GEO1005-GeoCharge-Group-11\Plugin\GeoChargePlugin
 
 Your QGIS plugin directory is located at:
-    C:/Users/joost/.qgis2/python/plugins
+    C:/Users/JuanDavid/.qgis2/python/plugins
 
 What's Next:
 
@@ -17,7 +17,7 @@ What's Next:
 
   * Test the plugin by enabling it in the QGIS plugin manager
 
-  * Customize it by editing the implementation file: ``geo_charge_module.py``
+  * Customize it by editing the implementation file: ``Geo_Charge_plugin.py``
 
   * Create your own custom icon, replacing the default icon.png
 
