@@ -228,7 +228,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         self.startCounterButton.setDisabled(True)
         self.cancelCounterButton.setDisabled(False)"""
 
-    def cancelCounter(self):
+   """ def cancelCounter(self):
         # triggered if the user clicks the cancel button
         self.timerThread.stop()
         self.counterProgressBar.setValue(0)
@@ -240,7 +240,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         except:
             pass
         self.timerThread = None
-        """self.startCounterButton.setDisabled(False)"""
+        #self.startCounterButton.setDisabled(False)
         self.cancelCounterButton.setDisabled(True)
 
     def updateCounter(self, value):
@@ -261,7 +261,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         self.cancelCounterButton.setDisabled(True)
         # do something with the results
         self.iface.messageBar().pushMessage("Infor", "The counter results: %s" % result, level=0, duration=5)
-
+"""
 
 #######
 #    Analysis functions
