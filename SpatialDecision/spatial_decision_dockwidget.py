@@ -77,7 +77,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         self.saveScenarioButton.clicked.connect(self.saveScenario)
         self.selectLayerCombo.activated.connect(self.setSelectedLayer)
         self.selectAttributeCombo.activated.connect(self.setSelectedAttribute)
-        self.startCounterButton.clicked.connect(self.startCounter)
+        """self.startCounterButton.clicked.connect(self.startCounter)"""
         self.cancelCounterButton.clicked.connect(self.cancelCounter)
 
         # analysis
@@ -216,7 +216,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         return field_name
 
 
-    def startCounter(self):
+    """def startCounter(self):
         # prepare the thread of the timed even or long loop
         self.timerThread = TimedEvent(self.iface.mainWindow(),self,'default')
         self.timerThread.timerFinished.connect(self.concludeCounter)
@@ -226,7 +226,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         # from here the timer is running in the background on a separate thread. user can continue working on QGIS.
         self.counterProgressBar.setValue(0)
         self.startCounterButton.setDisabled(True)
-        self.cancelCounterButton.setDisabled(False)
+        self.cancelCounterButton.setDisabled(False)"""
 
     def cancelCounter(self):
         # triggered if the user clicks the cancel button
@@ -240,7 +240,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         except:
             pass
         self.timerThread = None
-        self.startCounterButton.setDisabled(False)
+        """self.startCounterButton.setDisabled(False)"""
         self.cancelCounterButton.setDisabled(True)
 
     def updateCounter(self, value):
@@ -257,7 +257,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         except:
             pass
         self.timerThread = None
-        self.startCounterButton.setDisabled(False)
+        """self.startCounterButton.setDisabled(False)"""
         self.cancelCounterButton.setDisabled(True)
         # do something with the results
         self.iface.messageBar().pushMessage("Infor", "The counter results: %s" % result, level=0, duration=5)
