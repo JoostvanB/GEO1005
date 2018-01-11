@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69dea96a-503b-4064-b99f-df7f07171bca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GEO1005-GeoCharge-Group-11.iml" afterPath="$PROJECT_DIR$/.idea/GEO1005-GeoCharge-Group-11.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/QGIS files/Week 5 project 2.0.qgs" afterPath="$PROJECT_DIR$/QGIS files/Week 5 project 2.0.qgs" />
-      <change beforePath="$PROJECT_DIR$/SpatialDecision/spatial_decision_dockwidget.py" afterPath="$PROJECT_DIR$/SpatialDecision/spatial_decision_dockwidget.py" />
-      <change beforePath="$PROJECT_DIR$/SpatialDecision/spatial_decision_dockwidget_base.ui" afterPath="$PROJECT_DIR$/SpatialDecision/spatial_decision_dockwidget_base.ui" />
-      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/distlib/util.py" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip/_vendor/distlib/util.py" />
-    </list>
+    <list default="true" id="69dea96a-503b-4064-b99f-df7f07171bca" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +167,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="9" y="20" width="1347" height="688" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
