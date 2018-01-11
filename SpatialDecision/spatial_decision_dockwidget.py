@@ -69,16 +69,18 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 
         # set up GUI operation signals
         # data
-        self.iface.projectRead.connect(self.updateLayers)
-        self.iface.newProjectCreated.connect(self.updateLayers)
-        self.iface.legendInterface().itemRemoved.connect(self.updateLayers)
-        self.iface.legendInterface().itemAdded.connect(self.updateLayers)
+        #self.iface.projectRead.connect(self.updateLayers)
+        #self.iface.newProjectCreated.connect(self.updateLayers)
+        #self.iface.legendInterface().itemRemoved.connect(self.updateLayers)
+        #self.iface.legendInterface().itemAdded.connect(self.updateLayers)
         self.openScenarioButton.clicked.connect(self.openScenario)
         self.saveScenarioButton.clicked.connect(self.saveScenario)
-        self.selectLayerCombo.activated.connect(self.setSelectedLayer)
-        self.selectAttributeCombo.activated.connect(self.setSelectedAttribute)
-        """self.startCounterButton.clicked.connect(self.startCounter)"""
-        self.cancelCounterButton.clicked.connect(self.cancelCounter)
+        #self.selectLayerCombo.activated.connect(self.setSelectedLayer)
+        #self.selectAttributeCombo.activated.connect(self.setSelectedAttribute)
+        #self.startCounterButton.clicked.connect(self.startCounter)
+        #self.cancelCounterButton.clicked.connect(self.cancelCounter)
+        self.checkBoxDemand.stateChanged.connect(lambda: self.updateLayers(self.checkBoxDemand.text(),self.checkBoxDemand.isChecked()))
+        #self.checkBoxChargingSpots.stateChanged.connect(self.updateLayers)
 
         # analysis
         self.graph = QgsGraph()
@@ -111,16 +113,16 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         self.emitPoint.canvasClicked.connect(self.getPoint)
 
         # set current UI values
-        self.counterProgressBar.setValue(0)
+        #self.counterProgressBar.setValue(0)
 
         # add button icons
-        self.medicButton.setIcon(QtGui.QIcon(':icons/medic_box.png'))
-        self.ambulanceButton.setIcon(QtGui.QIcon(':icons/ambulance.png'))
-        self.logoLabel.setPixmap(QtGui.QPixmap(':icons/ambulance.png'))
+        #self.medicButton.setIcon(QtGui.QIcon(':icons/medic_box.png'))
+        #self.ambulanceButton.setIcon(QtGui.QIcon(':icons/ambulance.png'))
+        #self.logoLabel.setPixmap(QtGui.QPixmap(':icons/ambulance.png'))
 
-        movie = QtGui.QMovie(':icons/loading2.gif')
+        """movie = QtGui.QMovie(':icons/loading2.gif')
         self.logoLabel.setMovie(movie)
-        movie.start()
+        movie.start()"""
 
         # add matplotlib Figure to chartFrame
         self.chart_figure = Figure()
@@ -133,11 +135,11 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         self.chartLayout.addWidget(self.chart_canvas)
 
         # initialisation
-        self.updateLayers()
+        #self.updateLayers()
 
         #run simple tests
 
-    def closeEvent(self, event):
+    """def closeEvent(self, event):
         # disconnect interface signals
         try:
             self.iface.projectRead.disconnect(self.updateLayers)
@@ -148,11 +150,11 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
             pass
 
         self.closingPlugin.emit()
-        event.accept()
-
+        event.accept()"""
 #######
 #   Data functions
 #######
+
     def openScenario(self,filename=""):
         scenario_open = False
         scenario_file = os.path.join(u'/Users/jorge/github/GEO1005','sample_data','time_test.qgs')
@@ -166,33 +168,45 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
             if new_file:
                 self.iface.addProject(unicode(new_file))
                 scenario_open = True
-        if scenario_open:
-            self.updateLayers()
+        #if scenario_open:
+        #    self.updateLayers()
 
     def saveScenario(self):
         self.iface.actionSaveProject()
 
-    def updateLayers(self):
+    def updateLayers(self, layerText, status):
         layers = uf.getLegendLayers(self.iface, 'all', 'all')
-        self.selectLayerCombo.clear()
+        #self.selectLayerCombo.clear()
         if layers:
             layer_names = uf.getLayersListNames(layers)
-            self.selectLayerCombo.addItems(layer_names)
-            self.setSelectedLayer()
+            layer = uf.getLegendLayerByName(self.iface, layerText)
+            if layer:
+                layerInCanvas = QgsMapCanvasLayer(layer)
+                legend = self.iface.legendInterface()
+                legend.setLayerVisible(layer, status)
+            else:
+                print("error")
         else:
-            self.selectAttributeCombo.clear()
-            self.clearChart()
+            print("error")
 
 
+            #self.selectLayerCombo.addItems(layer_names)
+            #self.setSelectedLayer()
+        #else:
+            #self.selectAttributeCombo.clear()
+            #self.clearChart()
+    """
     def setSelectedLayer(self):
         layer_name = self.selectLayerCombo.currentText()
         layer = uf.getLegendLayerByName(self.iface,layer_name)
         self.updateAttributes(layer)
+    
 
     def getSelectedLayer(self):
         layer_name = self.selectLayerCombo.currentText()
         layer = uf.getLegendLayerByName(self.iface,layer_name)
         return layer
+    """
 
     def updateAttributes(self, layer):
         self.selectAttributeCombo.clear()
@@ -215,8 +229,8 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         field_name = self.selectAttributeCombo.currentText()
         return field_name
 
-
-    """def startCounter(self):
+    """
+    def startCounter(self):
         # prepare the thread of the timed even or long loop
         self.timerThread = TimedEvent(self.iface.mainWindow(),self,'default')
         self.timerThread.timerFinished.connect(self.concludeCounter)
@@ -226,9 +240,9 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         # from here the timer is running in the background on a separate thread. user can continue working on QGIS.
         self.counterProgressBar.setValue(0)
         self.startCounterButton.setDisabled(True)
-        self.cancelCounterButton.setDisabled(False)"""
+        self.cancelCounterButton.setDisabled(False)
 
-   """ def cancelCounter(self):
+    def cancelCounter(self):
         # triggered if the user clicks the cancel button
         self.timerThread.stop()
         self.counterProgressBar.setValue(0)
@@ -257,16 +271,17 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         except:
             pass
         self.timerThread = None
-        """self.startCounterButton.setDisabled(False)"""
+        self.startCounterButton.setDisabled(False)
         self.cancelCounterButton.setDisabled(True)
         # do something with the results
         self.iface.messageBar().pushMessage("Infor", "The counter results: %s" % result, level=0, duration=5)
-"""
+        """
 
 #######
 #    Analysis functions
 #######
     # route functions
+
     def getNetwork(self):
         roads_layer = self.getSelectedLayer()
         if roads_layer:
