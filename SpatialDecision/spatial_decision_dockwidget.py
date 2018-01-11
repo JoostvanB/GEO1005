@@ -87,7 +87,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         #self.checkBoxWaterways.stateChanged.connect(lambda: self.updateLayers(self.checkBoxWaterways.text(), self.checkBoxWaterways.isChecked()))
         #self.checkBoxRailways.stateChanged.connect(lambda: self.updateLayers(self.checkBoxRailways.text(), self.checkBoxRailways.isChecked()))
 
-
+    """
         # analysis
         self.graph = QgsGraph()
         self.tied_points = []
@@ -126,9 +126,9 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         #self.ambulanceButton.setIcon(QtGui.QIcon(':icons/ambulance.png'))
         #self.logoLabel.setPixmap(QtGui.QPixmap(':icons/ambulance.png'))
 
-        """movie = QtGui.QMovie(':icons/loading2.gif')
+        movie = QtGui.QMovie(':icons/loading2.gif')
         self.logoLabel.setMovie(movie)
-        movie.start()"""
+        movie.start()
 
         # add matplotlib Figure to chartFrame
         self.chart_figure = Figure()
@@ -145,7 +145,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 
         #run simple tests
 
-    """def closeEvent(self, event):
+    def closeEvent(self, event):
         # disconnect interface signals
         try:
             self.iface.projectRead.disconnect(self.updateLayers)
@@ -156,7 +156,8 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
             pass
 
         self.closingPlugin.emit()
-        event.accept()"""
+        event.accept()
+    """
 #######
 #   Data functions
 #######
@@ -179,7 +180,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
 
     def saveScenario(self):
         self.iface.actionSaveProject()
-
+    
     def updateLayers(self, layerText, status):
         layers = uf.getLegendLayers(self.iface, 'all', 'all')
         #self.selectLayerCombo.clear()
@@ -194,14 +195,14 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
                 print("error")
         else:
             print("error")
-
+    """
 
             #self.selectLayerCombo.addItems(layer_names)
             #self.setSelectedLayer()
         #else:
             #self.selectAttributeCombo.clear()
             #self.clearChart()
-    """
+    
     def setSelectedLayer(self):
         layer_name = self.selectLayerCombo.currentText()
         layer = uf.getLegendLayerByName(self.iface,layer_name)
@@ -212,7 +213,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         layer_name = self.selectLayerCombo.currentText()
         layer = uf.getLegendLayerByName(self.iface,layer_name)
         return layer
-    """
+    
 
     def updateAttributes(self, layer):
         self.selectAttributeCombo.clear()
@@ -235,7 +236,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         field_name = self.selectAttributeCombo.currentText()
         return field_name
 
-    """
+    
     def startCounter(self):
         # prepare the thread of the timed even or long loop
         self.timerThread = TimedEvent(self.iface.mainWindow(),self,'default')
@@ -281,7 +282,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
         self.cancelCounterButton.setDisabled(True)
         # do something with the results
         self.iface.messageBar().pushMessage("Infor", "The counter results: %s" % result, level=0, duration=5)
-        """
+        
 
 #######
 #    Analysis functions
@@ -696,7 +697,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS):
                     writer.writerow(rowdata)
 
 
-
+    """
 class TimedEvent(QtCore.QThread):
     timerFinished = QtCore.pyqtSignal(list)
     timerProgress = QtCore.pyqtSignal(int)

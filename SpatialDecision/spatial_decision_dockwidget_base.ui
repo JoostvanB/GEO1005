@@ -2,17 +2,9 @@
 <ui version="4.0">
  <class>SpatialDecisionDockWidgetBase</class>
  <widget class="QDockWidget" name="SpatialDecisionDockWidgetBase">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>400</width>
-    <height>550</height>
-   </rect>
-  </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
+    <width>495</width>
     <height>550</height>
    </size>
   </property>
@@ -20,318 +12,238 @@
    <string>SDSS Template</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
-   <widget class="QTabWidget" name="sampleWidgets">
-    <property name="geometry">
-     <rect>
-      <x>12</x>
-      <y>6</y>
-      <width>373</width>
-      <height>500</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777215</width>
-      <height>500</height>
-     </size>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="dataTab">
-     <attribute name="title">
-      <string>Data</string>
-     </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <layout class="QFormLayout" name="formLayout">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="openScenarioButton">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="sampleWidgets">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>500</height>
+       </size>
+      </property>
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <widget class="QWidget" name="OverviewTab">
+       <property name="maximumSize">
+        <size>
+         <width>1124</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <attribute name="title">
+        <string>Overview</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QTextEdit" name="textEdit">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>9</pointsize>
+           </font>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Calibri'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-style:italic;&quot;&gt;The purpose of this app&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;&quot;&gt; is to assist city planners to determine the best place to build additional charging spots for electric vehicles in the city of Rotterdam. Get an overview of the situation by loading the data and by checking or unchecking the six layers below. Go to the tab 'Analysis' for a more thourough analysis.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="openScenarioButton_2">
           <property name="text">
            <string>Load Data</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="saveScenarioButton">
-          <property name="text">
-           <string>Save Scenario</string>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0">
+          <item row="5" column="1">
+           <widget class="QCheckBox" name="checkBoxPOI">
+            <property name="text">
+             <string>Points Of Interest</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QCheckBox" name="checkBoxRoads">
+            <property name="text">
+             <string>Roads</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QCheckBox" name="checkBoxDemand">
+            <property name="text">
+             <string>Electric Vehicle Demand</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QCheckBox" name="checkBoxWaterways">
+            <property name="text">
+             <string>Waterways</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="checkBoxIncome">
+            <property name="text">
+             <string>Average Income</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="checkBoxChargingSpots">
+            <property name="text">
+             <string>Charging Spots</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QCheckBox" name="checkRailways">
+            <property name="text">
+             <string>Railways</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <weight>50</weight>
+              <italic>true</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+             </font>
+            </property>
+            <property name="text">
+             <string>Layers:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
           </property>
-         </widget>
+          <item row="3" column="1">
+           <widget class="QLabel" name="selectLayerLabel">
+            <property name="minimumSize">
+             <size>
+              <width>343</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; vertical-align:super;&quot;&gt;Low demand &lt;/span&gt;&lt;img src=&quot;:/newPrefix/income2.png&quot; /&gt; &lt;span style=&quot; font-size:14pt; vertical-align:super;&quot;&gt; High demand&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; vertical-align:super;&quot;&gt;Low income &lt;/span&gt;&lt;img src=&quot;:/newPrefix/00 Good one finals.jpg&quot; /&gt;  &lt;span style=&quot; font-size:14pt; vertical-align:super;&quot;&gt;High income&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>     Legend for the layers 'Electric Vehicle Demand' and 'Average income':</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout"/>
         </item>
        </layout>
-      </item>
-      <item>
-       <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0">
-        <item row="2" column="1">
-         <widget class="QCheckBox" name="checkBoxDemand">
-          <property name="text">
-           <string>Demand</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="selectLayerLabel">
-          <property name="text">
-           <string>Select layer:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QCheckBox" name="checkBoxChargingSpots">
-          <property name="text">
-           <string>Charging Spots</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="selectAttributeLabel">
-          <property name="text">
-           <string>Select attribute:</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QGridLayout" name="gridLayout"/>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="analysisTab">
-     <attribute name="title">
-      <string>analysis</string>
-     </attribute>
-     <layout class="QFormLayout" name="formLayout_4">
-      <property name="fieldGrowthPolicy">
-       <enum>QFormLayout::FieldsStayAtSizeHint</enum>
-      </property>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="setNetworkButton">
-        <property name="text">
-         <string>Build Network</string>
+      </widget>
+      <widget class="QWidget" name="AnalysisTab">
+       <attribute name="title">
+        <string>Analysis</string>
+       </attribute>
+       <layout class="QFormLayout" name="formLayout_4">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::FieldsStayAtSizeHint</enum>
         </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="networkLabel">
-        <property name="text">
-         <string>Uses selected objects for origins / destinations</string>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="shortestRouteButton">
-        <property name="text">
-         <string>Shortest Route</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QPushButton" name="clearRouteButton">
-        <property name="text">
-         <string>Clear Routes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QPushButton" name="serviceAreaButton">
-        <property name="text">
-         <string>ServiceArea</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="serviceAreaCutoffEdit">
-        <property name="text">
-         <string>1500</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QPushButton" name="bufferButton">
-        <property name="text">
-         <string>Buffer</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="bufferCutoffEdit">
-        <property name="text">
-         <string>800</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QPushButton" name="makeIntersectionButton">
-        <property name="text">
-         <string>Intersection</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QPushButton" name="selectBufferButton">
-        <property name="text">
-         <string>Select in Buffer</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QPushButton" name="selectRangeButton">
-        <property name="text">
-         <string>Select in Range</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0" colspan="2">
-       <widget class="QLineEdit" name="expressionEdit">
-        <property name="text">
-         <string>id &lt; 3</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QPushButton" name="expressionSelectButton">
-        <property name="text">
-         <string>Select</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QPushButton" name="expressionFilterButton">
-        <property name="text">
-         <string>Filter</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="visualisationTab">
-     <attribute name="title">
-      <string>visualisation</string>
-     </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="1">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Buffer and Obstacles layers</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Apply style to selected layer</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QPushButton" name="displayStyleButton">
-          <property name="text">
-           <string>Load Style</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="displayRangeButton">
-          <property name="text">
-           <string>Apply Style</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" colspan="2">
-         <layout class="QVBoxLayout" name="chartLayout"/>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="reportingTab">
-     <attribute name="title">
-      <string>reporting</string>
-     </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0,0">
-      <item>
-       <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,1,1" rowminimumheight="0,1,1">
-        <item row="0" column="0">
-         <widget class="QLabel" name="featureCounterLabel">
-          <property name="text">
-           <string>Feature counter:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QPushButton" name="featureCounterUpdateButton">
-          <property name="text">
-           <string>Update</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="saveMapPathButton">
-          <property name="text">
-           <string>...</string>
+        <item row="0" column="0" colspan="2">
+         <widget class="QTextBrowser" name="textBrowser">
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.5pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Hover your mouse over the map of Rotterdam to get relevant information about the potential areas. Select maximum four areas for a more thorough analysis and press the button 'Analyze'. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;The following results will be visualized in the tab 'Results':&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;- Distance to closest charging spot&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;- Demand of parking spots&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;- Average occupation of closest charging spot&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;- Number of Points of Interest (hospitals, schools etc.)&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;- Distance to closest Point of Interest&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;- Average household income&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0" colspan="2">
-         <widget class="QLineEdit" name="saveMapPathEdit"/>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="featureCounterEdit"/>
-        </item>
-        <item row="2" column="1">
-         <widget class="QPushButton" name="saveMapButton">
+         <widget class="QPushButton" name="pushButton">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
           <property name="text">
-           <string>Save Map</string>
+           <string>Analyse</string>
           </property>
          </widget>
         </item>
        </layout>
-      </item>
-      <item>
-       <widget class="QLabel" name="reportLabel">
-        <property name="text">
-         <string>Layer Report:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QListWidget" name="reportList"/>
-      </item>
-      <item>
-       <widget class="QLabel" name="statisticsLabel">
-        <property name="text">
-         <string>Attribute Summary:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTableWidget" name="statisticsTable"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="saveStatisticsButton">
-        <property name="text">
-         <string>Save Summary</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </widget>
+      </widget>
+      <widget class="QWidget" name="ResultsTab">
+       <attribute name="title">
+        <string>Results</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3"/>
+      </widget>
+      <widget class="QWidget" name="ReportingTab">
+       <attribute name="title">
+        <string>Reporting</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Save scenario</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

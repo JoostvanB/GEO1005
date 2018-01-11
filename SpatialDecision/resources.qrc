@@ -1,9 +1,13 @@
 <RCC>
-  <qresource prefix="/">
-    <file>icons/ambulance.png</file>
-    <file>icons/icon.png</file>
-    <file>icons/medic_box.png</file>
-    <file>icons/loading.gif</file>
-    <file>icons/loading2.gif</file>
+  <qresource prefix="newPrefix">
+    <file>00 Good one finals.jpg</file>
+    <file>123goodone.jpg</file>
+    <file>123123.jpg</file>
+    <file>00123123123asdf.png</file>
+    <file>income3.png</file>
+    <file>income2.png</file>
+    <file>income_small.jpg</file>
+    <file>demand.JPG</file>
+    <file>Income.JPG</file>
   </qresource>
 </RCC>
