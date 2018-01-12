@@ -21,8 +21,9 @@
  ***************************************************************************/
 """
 
-from PyQt4 import QtGui, QtCore, uic, QObject
+from PyQt4 import QtGui, QtCore, uic
 from qgis.core import *
+from PyQt4.QtCore import *
 from qgis.networkanalysis import *
 from qgis.gui import *
 import processing
@@ -67,38 +68,25 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         # define globals
         self.iface = iface
         self.canvas = self.iface.mapCanvas()
+        self.npuntos = 0
+        self.userTool = self.canvas.mapTool()
         # set up GUI operation signals
         # data
-        #self.iface.projectRead.connect(self.updateLayers)
-        #self.iface.newProjectCreated.connect(self.updateLayers)
-        #self.iface.legendInterface().itemRemoved.connect(self.updateLayers)
-        #self.iface.legendInterface().itemAdded.connect(self.updateLayers)
         self.openScenarioButton.clicked.connect(self.openScenario)
         self.saveScenarioButton.clicked.connect(self.saveScenario)
-        #self.selectLayerCombo.activated.connect(self.setSelectedLayer)
-        #self.selectAttributeCombo.activated.connect(self.setSelectedAttribute)
-        #self.startCounterButton.clicked.connect(self.startCounter)
-        #self.cancelCounterButton.clicked.connect(self.cancelCounter)
         self.checkBoxDemand.stateChanged.connect(lambda: self.updateLayers(self.checkBoxDemand.text(),self.checkBoxDemand.isChecked()))
-        #self.checkBoxIncome.stateChanged.connect(lambda: self.updateLayers(self.checkBoxIncome.text(), self.checkBoxIncome.isChecked()))
-        #self.checkBoxPOI.stateChanged.connect(lambda: self.updateLayers(self.checkBoxPOI.text(), self.checkBoxPOI.isChecked()))
+        self.checkBoxIncome.stateChanged.connect(lambda: self.updateLayers(self.checkBoxIncome.text(), self.checkBoxIncome.isChecked()))
+        self.checkBoxPOI.stateChanged.connect(lambda: self.updateLayers(self.checkBoxPOI.text(), self.checkBoxPOI.isChecked()))
         self.checkBoxChargingSpots.stateChanged.connect(lambda: self.updateLayers(self.checkBoxChargingSpots.text(), self.checkBoxChargingSpots.isChecked()))
-        #self.checkBoxRoads.stateChanged.connect(lambda: self.updateLayers(self.checkBoxRoads.text(), self.checkBoxRoads.isChecked()))
-        #self.checkBoxWaterways.stateChanged.connect(lambda: self.updateLayers(self.checkBoxWaterways.text(), self.checkBoxWaterways.isChecked()))
-        #self.checkBoxRailways.stateChanged.connect(lambda: self.updateLayers(self.checkBoxRailways.text(), self.checkBoxDemand.isChecked()))
-
-
+        self.checkBoxRoads.stateChanged.connect(lambda: self.updateLayers(self.checkBoxRoads.text(), self.checkBoxRoads.isChecked()))
+        self.checkBoxWaterways.stateChanged.connect(lambda: self.updateLayers(self.checkBoxWaterways.text(), self.checkBoxWaterways.isChecked()))
+        self.checkBoxRailways.stateChanged.connect(lambda: self.updateLayers(self.checkBoxRailways.text(), self.checkBoxRailways.isChecked()))
+        self.pushButtonAdd.clicked.connect(self.selectClickTool)
+        self.pushButtonConfirmPoint.clicked.connect(self.enterPoi)
 
         # reporting
-        self.featureCounterUpdateButton.clicked.connect(self.updateNumberFeatures)
-        self.saveMapButton.clicked.connect(self.saveMap)
-        self.saveMapPathButton.clicked.connect(self.selectFile)
-        self.updateAttribute.connect(self.extractAttributeSummary)
-        self.saveStatisticsButton.clicked.connect(self.saveTable)
         self.emitPoint = QgsMapToolEmitPoint(self.canvas)
-        self.featureCounterUpdateButton.clicked.connect(self.enterPoi)
         self.emitPoint.canvasClicked.connect(self.getPoint)
-
 
         # initialisation
         #self.updateLayers()
@@ -110,13 +98,13 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
 
     def openScenario(self,filename=""):
         scenario_open = False
-        scenario_file = os.path.join(u'/Users/jorge/github/GEO1005','sample_data','time_test.qgs')
+        scenario_file = os.path.join(u'QGIS files','Week 5 project 2.0.qgs')
         # check if file exists
         if os.path.isfile(scenario_file):
             self.iface.addProject(scenario_file)
             scenario_open = True
         else:
-            last_dir = uf.getLastDir("SDSS")
+            last_dir = uf.getLastDir("SpatialDecision")
             new_file = QtGui.QFileDialog.getOpenFileName(self, "", last_dir, "(*.qgs)")
             if new_file:
                 self.iface.addProject(unicode(new_file))
@@ -128,7 +116,6 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         self.iface.actionSaveProject()
 
     def updateLayers(self, layerText, status):
-        self.lineEdit.setText("Updated layers")
         layers = uf.getLegendLayers(self.iface, 'all', 'all')
         #self.selectLayerCombo.clear()
         if layers:
@@ -420,20 +407,30 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
     # get the point when the user clicks on the canvas
     def enterPoi(self):
         # remember currently selected tool
-        self.userTool = self.canvas.mapTool()
+        self.npuntos = (self.npuntos + 1)%4
         # activate coordinate capture tool
+        self.canvas.setMapTool(self.userTool)
+    def selectClickTool(self):
         self.canvas.setMapTool(self.emitPoint)
-
     def getPoint(self, mapPoint, mouseButton):
         # change tool so you don't get more than one POI
-        self.lineEdit.setText("puta")
-        self.canvas.unsetMapTool(self.emitPoint)
-        self.canvas.setMapTool(self.userTool)
+        if self.npuntos == 0:
+            self.lineEditOneLat.setText(str(mapPoint.x()))
+            self.lineEditOneLon.setText(str(mapPoint.y()))
+        elif  self.npuntos == 1:
+            self.lineEditTwoLat.setText(str(mapPoint.x()))
+            self.lineEditTwoLon.setText(str(mapPoint.y()))
+        elif self.npuntos == 2:
+            self.lineEditThreeLat.setText(str(mapPoint.x()))
+            self.lineEditThreeLon.setText(str(mapPoint.y()))
+        elif self.npuntos == 3:
+            self.lineEditFourLat.setText(str(mapPoint.x()))
+            self.lineEditFourLon.setText(str(mapPoint.y()))
+
+
 
         #Get the click
-        if mapPoint:
-            self.lineEdit.setText(mapPoint)
+        #if mapPoint:
+        #    self.lineEdit.setText(mapPoint)
             # here do something with the point
-
-
 
