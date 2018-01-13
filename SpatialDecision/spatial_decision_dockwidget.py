@@ -49,6 +49,7 @@ FORM_CLASS, _ = uic.loadUiType(os.path.join(
 
 
 class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
+    # Set working directory
 
     closingPlugin = QtCore.pyqtSignal()
     #custom signals
@@ -57,23 +58,25 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
     def __init__(self, iface, parent=None):
         """Constructor."""
         super(SpatialDecisionDockWidget, self).__init__(parent)
-
+        os.chdir(os.path.join(os.path.dirname(__file__),'QGIS files'))
+        self.workingDirectory = os.getcwd()
+        print("The working directory is "+str(self.workingDirectory))
         # Set up the user interface from Designer.
         # After setupUI you can access any designer object by doing
         # self.<objectname>, and you can use autoconnect slots - see
         # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
         # #widgets-and-dialogs-with-auto-connect
         self.setupUi(self)
-
         # define globals
         self.iface = iface
         self.canvas = self.iface.mapCanvas()
         self.npuntos = 0
         self.userTool = self.canvas.mapTool()
+        self.Demand = [0, 0, 0, 0]
         # set up GUI operation signals
         # data
-        self.openScenarioButton.clicked.connect(self.openScenario)
-        self.saveScenarioButton.clicked.connect(self.saveScenario)
+        self.loadDataButton.clicked.connect(self.loadData)
+        #self.saveScenarioButton.clicked.connect(self.saveScenario)
         self.checkBoxDemand.stateChanged.connect(lambda: self.updateLayers(self.checkBoxDemand.text(),self.checkBoxDemand.isChecked()))
         self.checkBoxIncome.stateChanged.connect(lambda: self.updateLayers(self.checkBoxIncome.text(), self.checkBoxIncome.isChecked()))
         self.checkBoxPOI.stateChanged.connect(lambda: self.updateLayers(self.checkBoxPOI.text(), self.checkBoxPOI.isChecked()))
@@ -81,24 +84,26 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         self.checkBoxRoads.stateChanged.connect(lambda: self.updateLayers(self.checkBoxRoads.text(), self.checkBoxRoads.isChecked()))
         self.checkBoxWaterways.stateChanged.connect(lambda: self.updateLayers(self.checkBoxWaterways.text(), self.checkBoxWaterways.isChecked()))
         self.checkBoxRailways.stateChanged.connect(lambda: self.updateLayers(self.checkBoxRailways.text(), self.checkBoxRailways.isChecked()))
-        self.pushButtonAdd.clicked.connect(self.selectClickTool)
-        self.pushButtonConfirmPoint.clicked.connect(self.enterPoi)
-
-        # reporting
+        self.createScenarioButton.clicked.connect(self.createScenario)
+        #self.pushButtonAdd.clicked.connect(self.selectClickTool)
+        #self.pushButtonConfirmPoint.clicked.connect(self.enterPoi)
+        # analysis
         self.emitPoint = QgsMapToolEmitPoint(self.canvas)
         self.emitPoint.canvasClicked.connect(self.getPoint)
+        self.pushButton.clicked.connect(self.getData)
 
         # initialisation
         #self.updateLayers()
 
         #run simple tests
 #######
-#   Data functions
+#   Overview functions
 #######
-
-    def openScenario(self,filename=""):
+    #This method loads the project which includes background data and scenarios
+    def loadData(self,filename=""):
         scenario_open = False
-        scenario_file = os.path.join(u'QGIS files','Week 5 project 2.0.qgs')
+        scenario_file = "Week 5 project 2.0.qgs"
+        print(scenario_file)
         # check if file exists
         if os.path.isfile(scenario_file):
             self.iface.addProject(scenario_file)
@@ -109,47 +114,65 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
             if new_file:
                 self.iface.addProject(unicode(new_file))
                 scenario_open = True
-        #if scenario_open:
-        #    self.updateLayers()
+        root = QgsProject.instance().layerTreeRoot()
+        found = False
+
+        for child in root.children():
+            if isinstance(child, QgsLayerTreeGroup):
+                if child.name() == "Scenarios":
+                    found = True
+                    parent = child
+                    if parent.children():
+                        for child in parent.children():
+                            self.activeScenarioCombo.addItem(child.name())
+                            self.activeScenarioCombo_2.addItem(child.name())
+        print(found)
+        if not found:
+            scenarioGroup = root.insertGroup(0, "Scenarios")
+        layers = uf.getLegendLayers(self.iface, 'all', 'all')
+    def createScenario(self):
+        nameScenario, okPressed = QtGui.QInputDialog.getText(self, "Create Scenario", "Please input the new scenario name:")
+        if okPressed:
+            self.activeScenarioCombo.addItem(nameScenario)
+            self.activeScenarioCombo_2.addItem(nameScenario)
+            newLayer = QgsVectorLayer("Point", nameScenario, "memory")
+            layerData = newLayer.dataProvider()
+            layerData.addAttributes([QgsField("ID", QVariant.String), QgsField("lat", QVariant.String),
+                                          QgsField("lon", QVariant.String), QgsField("Demand", QVariant.String),
+                                          QgsField("Avg_Income", QVariant.String)])  #
+            newLayer.commitChanges()
+            root = QgsProject.instance().layerTreeRoot()
+            parentGroup = root.findGroup("Scenarios")
+            QgsMapLayerRegistry.instance().addMapLayer(newLayer, False)
+            parentGroup.insertChildNode(0, QgsLayerTreeLayer(newLayer))
 
     def saveScenario(self):
         self.iface.actionSaveProject()
 
     def updateLayers(self, layerText, status):
         layers = uf.getLegendLayers(self.iface, 'all', 'all')
-        #self.selectLayerCombo.clear()
         if layers:
-            layer_names = uf.getLayersListNames(layers)
             layer = uf.getLegendLayerByName(self.iface, layerText)
             if layer:
-                layerInCanvas = QgsMapCanvasLayer(layer)
                 legend = self.iface.legendInterface()
                 legend.setLayerVisible(layer, status)
-            else:
-                print("error")
-        else:
-            print("error")
+                layerDemand = uf.getLegendLayerByName(self.iface, "Electric Vehicle Demand")
+                layerIncome = uf.getLegendLayerByName(self.iface, "Average Income")
+                if layerText == "Electric Vehicle Demand":
+                    if self.checkBoxDemand.isChecked():
+                        if self.checkBoxIncome.isChecked():
+                            self.checkBoxIncome.setChecked(False)
+                if layerText == "Average Income":
+                    if self.checkBoxDemand.isChecked():
+                        if self.checkBoxIncome.isChecked():
+                            self.checkBoxDemand.setChecked(False)
 
 
-            #self.selectLayerCombo.addItems(layer_names)
-            #self.setSelectedLayer()
-        #else:
-            #self.selectAttributeCombo.clear()
-            #self.clearChart()
-    """
-    def setSelectedLayer(self):
-        layer_name = self.selectLayerCombo.currentText()
-        layer = uf.getLegendLayerByName(self.iface,layer_name)
-        self.updateAttributes(layer)
-    
 
-    def getSelectedLayer(self):
-        layer_name = self.selectLayerCombo.currentText()
-        layer = uf.getLegendLayerByName(self.iface,layer_name)
-        return layer
-    """
 
-    def updateAttributes(self, layer):
+
+
+    def updateListOfScenarios(self, layer):
         self.selectAttributeCombo.clear()
         if layer:
             self.clearReport()
@@ -162,13 +185,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
                 self.updateReport(fields)
 
 
-    def setSelectedAttribute(self):
-        field_name = self.selectAttributeCombo.currentText()
-        self.updateAttribute.emit(field_name)
 
-    def getSelectedAttribute(self):
-        field_name = self.selectAttributeCombo.currentText()
-        return field_name
 
     def canvasReleaseEvent(self, event):
         self.lineEdit.setText("Hola")
@@ -412,6 +429,9 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         self.canvas.setMapTool(self.userTool)
     def selectClickTool(self):
         self.canvas.setMapTool(self.emitPoint)
+
+    def getData(self):
+        return None
     def getPoint(self, mapPoint, mouseButton):
         # change tool so you don't get more than one POI
         if self.npuntos == 0:
@@ -427,6 +447,26 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
             self.lineEditFourLat.setText(str(mapPoint.x()))
             self.lineEditFourLon.setText(str(mapPoint.y()))
 
+        # self.selectLayerCombo.clear()
+        # you neet to set which layers will you identify here which is in your case is just 'parish_layer'
+        layer = None
+        for lyr in QgsMapLayerRegistry.instance().mapLayers().values():
+            if lyr.name() == "Electric Vehicle Demand":
+                layer = lyr
+                break
+
+        features = QgsMapToolIdentify(self.canvas).identify(mapPoint.x(), mapPoint.y(), layer,
+                                                                           QgsMapToolIdentify.TopDownStopAtFirst)
+
+        if len(features) > 0:
+            # here you get the selected feature
+            feature = features[0].mFeature
+            # And here you get the attribute's value
+            self.Demand[self.npuntos] = feature["Demand"]
+            print(str(feature["Demand"]))
+        x = mapPoint.x()
+        y = mapPoint.y()
+        point = self.canvas.getCoordinateTransform().toMapCoordinates(x, y)
 
 
         #Get the click

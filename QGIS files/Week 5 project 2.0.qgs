@@ -5,36 +5,45 @@
   <evaluateDefaultValues active="0"/>
   <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="">
     <customproperties/>
-    <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Unchecked" id="Geclipt20180110123254496" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/raster_clipped_200m.shp" name="Demand">
+    <layer-tree-group expanded="1" checked="Qt::Checked" name="Scenarios">
       <customproperties/>
-    </layer-tree-layer>
-    <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Checked" id="Raster_clipped_200m_kopie20180110123427857" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/raster_clipped_200m.shp" name="Average Income">
+      <layer-tree-layer expanded="1" providerKey="memory" checked="Qt::Checked" id="Joost20180113151641710" source="Point" name="Joost">
+        <customproperties/>
+      </layer-tree-layer>
+    </layer-tree-group>
+    <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="Background Data">
       <customproperties/>
-    </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Geclipt20180110134948567" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/POI_clipped.shp" name="Points Of Interest">
-      <customproperties/>
-    </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Geclipt_Rotterdam_Data20171214163609514" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Geclipt_Rotterdam_Data.shx" name="Current Charging Spots">
-      <customproperties/>
-    </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Selection_4_neighbourhoods20171214161122939" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Selection_4_neighbourhoods.shx" name="Roads">
-      <customproperties/>
-    </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Geclipt_Waterdeel20171214161109146" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Geclipt_Waterdeel.shx" name="Waterways">
-      <customproperties/>
-    </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Geclipt_spoorbaandeel20171214161042294" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Geclipt_spoorbaandeel.shx" name="Railways">
-      <customproperties/>
-    </layer-tree-layer>
+      <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Geclipt_Rotterdam_Data20171214163609514" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Geclipt_Rotterdam_Data.shx" name="Charging Spots">
+        <customproperties/>
+      </layer-tree-layer>
+      <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Geclipt20180110134948567" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/POI_clipped.shp" name="Points Of Interest">
+        <customproperties/>
+      </layer-tree-layer>
+      <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Checked" id="Geclipt20180110123254496" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/raster_clipped_200m.shp" name="Electric Vehicle Demand">
+        <customproperties/>
+      </layer-tree-layer>
+      <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Unchecked" id="Raster_clipped_200m_kopie20180110123427857" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/raster_clipped_200m.shp" name="Average Income">
+        <customproperties/>
+      </layer-tree-layer>
+      <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Selection_4_neighbourhoods20171214161122939" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Selection_4_neighbourhoods.shx" name="Roads">
+        <customproperties/>
+      </layer-tree-layer>
+      <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Geclipt_spoorbaandeel20171214161042294" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Geclipt_spoorbaandeel.shx" name="Railways">
+        <customproperties/>
+      </layer-tree-layer>
+      <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Geclipt_Waterdeel20171214161109146" source="C:/Users/JuanDavid/Documents/GitHub/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Geclipt_Waterdeel.shx" name="Waterways">
+        <customproperties/>
+      </layer-tree-layer>
+    </layer-tree-group>
   </layer-tree-group>
   <relations/>
   <mapcanvas>
     <units>meters</units>
     <extent>
-      <xmin>88578.8899483643763233</xmin>
-      <ymin>434912.69306610233616084</ymin>
-      <xmax>96536.8252510987513233</xmax>
-      <ymax>439641.32130096561741084</ymax>
+      <xmin>89146.71028184326132759</xmin>
+      <ymin>437249.83723037975141779</ymin>
+      <xmax>92163.88379467459162697</xmax>
+      <ymax>438822.51427383261034265</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>1</projections>
@@ -52,38 +61,46 @@
     </destinationsrs>
     <rendermaptile>0</rendermaptile>
     <layer_coordinate_transform_info>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="temporary_layer_POI20180110134816933"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_gebouw20171214160752688"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_POI20180108213407657"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Raster20180110122811091"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110122607792"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Selection_4_neighbourhoods20171214161122939"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="temporary_layer20180110122312817"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Rotterdam_data20171214161520083"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_POI20180108213439383"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_comma20180110140007558"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_spoorbaandeel20171214161042294"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Extent20180110122232067"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110134948567"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110122847302"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_Rotterdam_Data20171214163609514"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Extent20180108175912278"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20171214161932285"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_Waterdeel20171214161109146"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Rotterdam_data20171214162512186"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_comma20180110181210764"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_spoorbaandeelPoint20171214160600025"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_POI20171214160801665"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Raster_clipped_200m_kopie20180110123427857"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Layer_to_remove_charging_spots20171214161644625"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_Terrein20171214161058996"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="OSM_2016_Rotterdam_POIs_WO20180108213514204"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20171214162556259"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110122708873"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="temporary_layer_POI20180110134754200"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110123254496"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Raster20180110123225384"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Extent20180110122232067"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_POI20180108213439383"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Rotterdam_data20171214161520083"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Hoola20180113030355082"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_POI20180108213407657"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_spoorbaandeelPoint20171214160600025"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_comma20180110140007558"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="kjbkjb20180113031903945"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="kjb20180113031527094"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="ljb20180113031854080"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20171214161932285"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_gebouw20171214160752688"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="efsef20180113013227974"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_POI20171214160801665"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="temporary_layer_POI20180110134754200"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_spoorbaandeel20171214161042294"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="ñkn20180113031333607"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110123254496"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Shit20180113030518940"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110134948567"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Joost20180113151641710"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Raster_clipped_200m_kopie20180110123427857"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="temporary_layer_POI20180110134816933"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_Rotterdam_Data20171214163609514"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_Terrein20171214161058996"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110122708873"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_comma20180110135936873"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Raster20180110122811091"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110122847302"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="test_comma20180110181210764"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Extent20180108175912278"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="temporary_layer20180110122312817"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Rotterdam_data20171214162512186"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="OSM_2016_Rotterdam_POIs_WO20180108213514204"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110122607792"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Layer_to_remove_charging_spots20171214161644625"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20171214162556259"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Selection_4_neighbourhoods20171214161122939"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_Waterdeel20171214161109146"/>
     </layer_coordinate_transform_info>
   </mapcanvas>
   <layer-tree-canvas>
@@ -95,44 +112,54 @@
       <item>Geclipt20180110123254496</item>
       <item>Raster_clipped_200m_kopie20180110123427857</item>
       <item>Geclipt20180110134948567</item>
+      <item>Joost20180113151641710</item>
     </custom-order>
   </layer-tree-canvas>
   <legend updateDrawingOrder="true">
-    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="Demand" showFeatureCount="0">
-      <filegroup open="false" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="Geclipt20180110123254496" visible="0"/>
-      </filegroup>
-    </legendlayer>
-    <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="Average Income" showFeatureCount="0">
-      <filegroup open="false" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="Raster_clipped_200m_kopie20180110123427857" visible="1"/>
-      </filegroup>
-    </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Points Of Interest" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="Geclipt20180110134948567" visible="1"/>
-      </filegroup>
-    </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Current Charging Spots" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="Geclipt_Rotterdam_Data20171214163609514" visible="1"/>
-      </filegroup>
-    </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Roads" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="Selection_4_neighbourhoods20171214161122939" visible="1"/>
-      </filegroup>
-    </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Waterways" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="Geclipt_Waterdeel20171214161109146" visible="1"/>
-      </filegroup>
-    </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Railways" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="Geclipt_spoorbaandeel20171214161042294" visible="1"/>
-      </filegroup>
-    </legendlayer>
+    <legendgroup open="true" checked="Qt::Checked" name="Scenarios">
+      <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Joost" showFeatureCount="0">
+        <filegroup open="true" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="Joost20180113151641710" visible="1"/>
+        </filegroup>
+      </legendlayer>
+    </legendgroup>
+    <legendgroup open="true" checked="Qt::PartiallyChecked" name="Background Data">
+      <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Charging Spots" showFeatureCount="0">
+        <filegroup open="true" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="Geclipt_Rotterdam_Data20171214163609514" visible="1"/>
+        </filegroup>
+      </legendlayer>
+      <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Points Of Interest" showFeatureCount="0">
+        <filegroup open="true" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="Geclipt20180110134948567" visible="1"/>
+        </filegroup>
+      </legendlayer>
+      <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="Electric Vehicle Demand" showFeatureCount="0">
+        <filegroup open="false" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="Geclipt20180110123254496" visible="1"/>
+        </filegroup>
+      </legendlayer>
+      <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="Average Income" showFeatureCount="0">
+        <filegroup open="false" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="Raster_clipped_200m_kopie20180110123427857" visible="0"/>
+        </filegroup>
+      </legendlayer>
+      <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Roads" showFeatureCount="0">
+        <filegroup open="true" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="Selection_4_neighbourhoods20171214161122939" visible="1"/>
+        </filegroup>
+      </legendlayer>
+      <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Railways" showFeatureCount="0">
+        <filegroup open="true" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="Geclipt_spoorbaandeel20171214161042294" visible="1"/>
+        </filegroup>
+      </legendlayer>
+      <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Waterways" showFeatureCount="0">
+        <filegroup open="true" hidden="false">
+          <legendlayerfile isInOverview="0" layerid="Geclipt_Waterdeel20171214161109146" visible="1"/>
+        </filegroup>
+      </legendlayer>
+    </legendgroup>
   </legend>
   <projectlayers>
     <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
@@ -147,7 +174,7 @@
       <keywordList>
         <value></value>
       </keywordList>
-      <layername>Demand</layername>
+      <layername>Electric Vehicle Demand</layername>
       <srs>
         <spatialrefsys>
           <proj4>+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +towgs84=565.2369,50.0087,465.658,-0.406857,0.350733,-1.87035,4.0812 +units=m +no_defs</proj4>
@@ -2437,7 +2464,7 @@ def my_form_open(dialog, layer, feature):
       <keywordList>
         <value></value>
       </keywordList>
-      <layername>Current Charging Spots</layername>
+      <layername>Charging Spots</layername>
       <srs>
         <spatialrefsys>
           <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
@@ -3638,6 +3665,111 @@ def my_form_open(dialog, layer, feature):
         <default field="brugnaam" expression=""/>
       </defaults>
       <previewExpression>COALESCE( "namespace", '&lt;NULL>' )</previewExpression>
+    </maplayer>
+    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+      <id>Joost20180113151641710</id>
+      <datasource>memory?geometry=Point&amp;field=ID:(0,0)&amp;field=lat:(0,0)&amp;field=lon:(0,0)&amp;field=Demand:(0,0)&amp;field=Avg_Income:(0,0)</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>Joost</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <provider encoding="UTF-8">memory</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <expressionfields/>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <edittypes/>
+      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
+        <symbols>
+          <symbol alpha="1" clip_to_extent="1" type="marker" name="0">
+            <layer pass="0" class="SimpleMarker" locked="0">
+              <prop k="angle" v="0"/>
+              <prop k="color" v="85,94,130,255"/>
+              <prop k="horizontal_anchor_point" v="1"/>
+              <prop k="joinstyle" v="bevel"/>
+              <prop k="name" v="circle"/>
+              <prop k="offset" v="0,0"/>
+              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
+              <prop k="offset_unit" v="MM"/>
+              <prop k="outline_color" v="0,0,0,255"/>
+              <prop k="outline_style" v="solid"/>
+              <prop k="outline_width" v="0"/>
+              <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
+              <prop k="outline_width_unit" v="MM"/>
+              <prop k="scale_method" v="diameter"/>
+              <prop k="size" v="2"/>
+              <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
+              <prop k="size_unit" v="MM"/>
+              <prop k="vertical_anchor_point" v="1"/>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale scalemethod="diameter"/>
+      </renderer-v2>
+      <labeling type="simple"/>
+      <customproperties/>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerTransparency>0</layerTransparency>
+      <displayfield></displayfield>
+      <label>0</label>
+      <labelattributes>
+        <label fieldname="" text="Etiqueta"/>
+        <family fieldname="" name="MS Shell Dlg 2"/>
+        <size fieldname="" units="pt" value="12"/>
+        <bold fieldname="" on="0"/>
+        <italic fieldname="" on="0"/>
+        <underline fieldname="" on="0"/>
+        <strikeout fieldname="" on="0"/>
+        <color fieldname="" red="0" blue="0" green="0"/>
+        <x fieldname=""/>
+        <y fieldname=""/>
+        <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+        <angle fieldname="" value="0" auto="0"/>
+        <alignment fieldname="" value="center"/>
+        <buffercolor fieldname="" red="255" blue="255" green="255"/>
+        <buffersize fieldname="" units="pt" value="1"/>
+        <bufferenabled fieldname="" on=""/>
+        <multilineenabled fieldname="" on=""/>
+        <selectedonly on=""/>
+      </labelattributes>
+      <annotationform></annotationform>
+      <aliases/>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <attributeactions default="-1"/>
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
+        <columns/>
+      </attributetableconfig>
+      <editform></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <defaults/>
+      <previewExpression></previewExpression>
     </maplayer>
     <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <id>Raster_clipped_200m_kopie20180110123427857</id>
@@ -5480,6 +5612,139 @@ def my_form_open(dialog, layer, feature):
       </defaults>
       <previewExpression></previewExpression>
     </maplayer>
+    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
+      <id>kj20180113031744527</id>
+      <datasource>memory?geometry=Point&amp;field=ID:(0,0)&amp;field=lat:(0,0)&amp;field=lon:(0,0)&amp;field=Demand:(0,0)&amp;field=Avg_Income:(0,0)</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>kj</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <provider encoding="UTF-8">memory</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <expressionfields/>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <edittypes>
+        <edittype widgetv2type="TextEdit" name="ID">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lat">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="lon">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="Demand">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+        <edittype widgetv2type="TextEdit" name="Avg_Income">
+          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
+        </edittype>
+      </edittypes>
+      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
+        <symbols>
+          <symbol alpha="1" clip_to_extent="1" type="marker" name="0">
+            <layer pass="0" class="SimpleMarker" locked="0">
+              <prop k="angle" v="0"/>
+              <prop k="color" v="244,248,165,255"/>
+              <prop k="horizontal_anchor_point" v="1"/>
+              <prop k="joinstyle" v="bevel"/>
+              <prop k="name" v="circle"/>
+              <prop k="offset" v="0,0"/>
+              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
+              <prop k="offset_unit" v="MM"/>
+              <prop k="outline_color" v="0,0,0,255"/>
+              <prop k="outline_style" v="solid"/>
+              <prop k="outline_width" v="0"/>
+              <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
+              <prop k="outline_width_unit" v="MM"/>
+              <prop k="scale_method" v="diameter"/>
+              <prop k="size" v="2"/>
+              <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
+              <prop k="size_unit" v="MM"/>
+              <prop k="vertical_anchor_point" v="1"/>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale scalemethod="diameter"/>
+      </renderer-v2>
+      <labeling type="simple"/>
+      <customproperties/>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerTransparency>0</layerTransparency>
+      <displayfield></displayfield>
+      <label>0</label>
+      <labelattributes>
+        <label fieldname="" text="Etiqueta"/>
+        <family fieldname="" name="MS Shell Dlg 2"/>
+        <size fieldname="" units="pt" value="12"/>
+        <bold fieldname="" on="0"/>
+        <italic fieldname="" on="0"/>
+        <underline fieldname="" on="0"/>
+        <strikeout fieldname="" on="0"/>
+        <color fieldname="" red="0" blue="0" green="0"/>
+        <x fieldname=""/>
+        <y fieldname=""/>
+        <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
+        <angle fieldname="" value="0" auto="0"/>
+        <alignment fieldname="" value="center"/>
+        <buffercolor fieldname="" red="255" blue="255" green="255"/>
+        <buffersize fieldname="" units="pt" value="1"/>
+        <bufferenabled fieldname="" on=""/>
+        <multilineenabled fieldname="" on=""/>
+        <selectedonly on=""/>
+      </labelattributes>
+      <annotationform></annotationform>
+      <aliases>
+        <alias field="ID" index="0" name=""/>
+        <alias field="lat" index="1" name=""/>
+        <alias field="lon" index="2" name=""/>
+        <alias field="Demand" index="3" name=""/>
+        <alias field="Avg_Income" index="4" name=""/>
+      </aliases>
+      <excludeAttributesWMS/>
+      <excludeAttributesWFS/>
+      <attributeactions default="-1"/>
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="1">
+        <columns/>
+      </attributetableconfig>
+      <editform></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <widgets/>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <defaults>
+        <default field="ID" expression=""/>
+        <default field="lat" expression=""/>
+        <default field="lon" expression=""/>
+        <default field="Demand" expression=""/>
+        <default field="Avg_Income" expression=""/>
+      </defaults>
+      <previewExpression></previewExpression>
+    </maplayer>
   </projectlayers>
   <properties>
     <Measurement>
@@ -5514,8 +5779,10 @@ def my_form_open(dialog, layer, feature):
         <value>Geclipt_spoorbaandeel20171214161042294</value>
         <value>Raster_clipped_200m_kopie20180110123427857</value>
         <value>Selection_4_neighbourhoods20171214161122939</value>
+        <value>kj20180113031744527</value>
       </LayerSnappingList>
       <LayerSnappingEnabledList type="QStringList">
+        <value>disabled</value>
         <value>disabled</value>
         <value>disabled</value>
         <value>disabled</value>
@@ -5534,8 +5801,10 @@ def my_form_open(dialog, layer, feature):
         <value>2</value>
         <value>2</value>
         <value>2</value>
+        <value>2</value>
       </LayerSnappingToleranceUnitList>
       <LayerSnapToList type="QStringList">
+        <value>to_vertex_and_segment</value>
         <value>to_vertex_and_segment</value>
         <value>to_vertex_and_segment</value>
         <value>to_vertex_and_segment</value>
@@ -5547,6 +5816,7 @@ def my_form_open(dialog, layer, feature):
       <DefaultSnapType type="QString">off</DefaultSnapType>
       <DefaultSnapTolerance type="double">0</DefaultSnapTolerance>
       <LayerSnappingToleranceList type="QStringList">
+        <value>0.000000</value>
         <value>0.000000</value>
         <value>0.000000</value>
         <value>0.000000</value>
