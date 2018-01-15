@@ -164,11 +164,12 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         nameScenario, okPressed = QtGui.QInputDialog.getText(self, "Create Scenario", "Please input the new scenario name:")
         if okPressed:
 
-            newLayer = QgsVectorLayer("Point", nameScenario, "memory")
+            newLayer = QgsVectorLayer("point?crs=epsg:28992", nameScenario, "memory")
             layerData = newLayer.dataProvider()
-            layerData.addAttributes([QgsField("ID", QVariant.String), QgsField("lat", QVariant.String),
-                                          QgsField("lon", QVariant.String), QgsField("Demand", QVariant.String),
-                                          QgsField("Avg_Income", QVariant.String)])  #
+            layerData.addAttributes([QgsField("ID", QVariant.Int), QgsField("x", QVariant.Double),
+                                          QgsField("y", QVariant.Double), QgsField("Demand", QVariant.Double),
+                                          QgsField("Avg_Income", QVariant.Double)])  #
+            newLayer.updateFields()
             newLayer.commitChanges()
             root = QgsProject.instance().layerTreeRoot()
             parentGroup = root.findGroup("Scenarios")
@@ -634,7 +635,41 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         print("Nice Click")
 
     def getPoint(self, mapPoint, mouseButton):
-        print("Nice Click")
+
+        layer = uf.getLegendLayerByName(self.iface, self.activeScenarioCombo_2.currentText())
+        demandLayer = uf.getLegendLayerByName(self.iface, "Electric Vehicle Demand")
+        if demandLayer:
+            print("got demand")
+            print(mapPoint.x())
+            print(mapPoint.y())
+        iterations = demandLayer.getFeatures()
+        demand = 0.0
+        income = 0.0
+        #for feature in iterations:
+        #    if (mapPoint.x() > feature.xmin) and (mapPoint.x() <= feature.xmax):
+        #        if (mapPoint.y() > feature.ymin) and (mapPoint.y() <= feature.ymax):
+        #            demand = feature.Demand
+        #            income = feature.Avg_Income
+
+        #if len(features) > 0:
+            # here you get the selected feature
+           ## print("cool")
+           # feature = features[0].mFeature
+            # And here you get the attribute's value
+           ## parishName = feature['Demand']
+           # print(str(parishName))
+        if QgsVectorDataProvider.AddFeatures:
+            feat = QgsFeature(layer.pendingFields())
+            # Or set a single attribute by key or by index:
+            feat.setAttribute('ID', 0.0)
+            feat.setAttribute('x', mapPoint.x())
+            feat.setAttribute('y', mapPoint.y())
+            feat.setAttribute('Demand', demand)
+            feat.setAttribute('Avg_Income', income)
+            feat.setGeometry(QgsGeometry.fromPoint(mapPoint))
+            (res, outFeats) = layer.dataProvider().addFeatures([feat])
+        layer.commitChanges()
+        self.canvas.refresh()
 
         # self.selectLayerCombo.clear()
         # you neet to set which layers will you identify here which is in your case is just 'parish_layer'
