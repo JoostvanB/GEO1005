@@ -21,7 +21,7 @@
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QFormLayout" name="formLayout_2">
-    <item row="0" column="0">
+    <item row="0" column="1">
      <widget class="QTabWidget" name="sampleWidgets">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
@@ -36,7 +36,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="OverviewTab">
        <property name="maximumSize">
@@ -299,8 +299,15 @@ p, li { white-space: pre-wrap; }
        <attribute name="title">
         <string>Results</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
          <widget class="QPushButton" name="pushButton">
           <property name="text">
            <string>Analize</string>
@@ -320,5 +327,6 @@ p, li { white-space: pre-wrap; }
    </layout>
   </widget>
  </widget>
+ <resources/>
  <connections/>
 </ui>

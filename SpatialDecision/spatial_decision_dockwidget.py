@@ -49,7 +49,7 @@ import csv
 import time
 
 from . import utility_functions as uf
-
+from PyQt4.QtGui import QIcon, QPixmap
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'spatial_decision_dockwidget_base.ui'))
@@ -105,12 +105,14 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         # analysis
         self.emitPoint = QgsMapToolEmitPoint(self.canvas)
         self.emitPoint.canvasClicked.connect(self.getPoint)
-        self.pushButton.clicked.connect(self.getData)
+        self.pushButton.clicked.connect(self.loadPlot)
 
         # initialisation
         self.loadData()
 
         #run figure
+
+
 
 
 #######
@@ -350,34 +352,15 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
             return verts
 
         def example_data():
-            # The following data is from the Denver Aerosol Sources and Health study.
-            # See  doi:10.1016/j.atmosenv.2008.12.017
-            #
-            # The data are pollution source profile estimates for five modeled
-            # pollution sources (e.g., cars, wood-burning, etc) that emit 7-9 chemical
-            # species. The radar charts are experimented with here to see if we can
-            # nicely visualize how the modeled source profiles change across four
-            # scenarios:
-            #  1) No gas-phase species present, just seven particulate counts on
-            #     Sulfate
-            #     Nitrate
-            #     Elemental Carbon (EC)
-            #     Organic Carbon fraction 1 (OC)
-            #     Organic Carbon fraction 2 (OC2)
-            #     Organic Carbon fraction 3 (OC3)
-            #     Pyrolized Organic Carbon (OP)
-            #  2)Inclusion of gas-phase specie carbon monoxide (CO)
-            #  3)Inclusion of gas-phase specie ozone (O3).
-            #  4)Inclusion of both gas-phase species is present...
             data = [
                 ['',
-                 'Average household income',
-                 'Distance to closest Point of Interest',
-                 'Number of Points of Interest within 200m radius',
+                 '1',
+                 '2',
+                 '3',
                  '',
-                 'Average occupation of closest charging spot',
-                 'Demand of parking spots',
-                 'Distance to closest charging spot'],
+                 '4',
+                 '5',
+                 '6'],
 
                 ('First potential spot', [
                     [0.00, 0.81, 0.96, 0.83, 0.00, 0.0, 0.0, 0.0],
@@ -389,32 +372,32 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
             ]
             return data
 
+        if __name__ == '__main__':
+            N = 8
+            theta = radar_factory(N, frame='polygon')
 
-        N = 8
-        theta = radar_factory(N, frame='polygon')
+            data = example_data()
+            spoke_labels = data.pop(0)
 
-        data = example_data()
-        spoke_labels = data.pop(0)
+            fig, axes = plt.subplots(figsize=(7, 7), nrows=2, ncols=1,
+                                     subplot_kw=dict(projection='radar'))
+            fig.subplots_adjust(wspace=0.55, hspace=0.10, top=0.85, bottom=0.05)
 
-        fig, axes = plt.subplots(figsize=(20, 20), nrows=2, ncols=1,
-                                 subplot_kw=dict(projection='radar'))
-        fig.subplots_adjust(wspace=0.55, hspace=0.20, top=0.85, bottom=0.05)
+            colors = ['b', 'r']
+            for ax, (title, case_data) in zip(axes.flatten(), data):
+                ax.set_rgrids([0.2, 0.4, 0.6, 0.8], angle=90)
+                ax.set_title(title, weight='bold', size='large', position=(0.5, 1))
+                for d, color in zip(case_data, colors):
+                    ax.plot(theta, d, color=color)
+                    ax.fill(theta, d, facecolor=color, alpha=0.65)
+                ax.set_varlabels(spoke_labels)
 
-        colors = ['r', 'b']
-        for ax, (title, case_data) in zip(axes.flatten(), data):
-            ax.set_rgrids([0.2, 0.4, 0.6, 0.8], angle=90)
-            ax.set_title(title, weight='bold', size='large', position=(0.5, 1.1),
-                         horizontalalignment='center', verticalalignment='center')
-            for d, color in zip(case_data, colors):
-                ax.plot(theta, d, color=color)
-                ax.fill(theta, d, facecolor=color, alpha=0.65)
-            ax.set_varlabels(spoke_labels)
+        fig.text(0.7, 0.4,
+                 'Legend:\n1:Average household income \n2:Distance to closest Point of Interest \n3:Number of Points of Interest within 200m radius \n4:Average occupation of closest charging spot \n5:Demand of parking spots \n6:Distance to closest charging spot',
+                 color='grey', weight='bold',
+                 size='medium')
 
-        fig.text(0.5, 0.68, 'Comparing chosen spots',
-                 horizontalalignment='center', color='green', weight='bold',
-                 size='xx-large')
-
-        fig.savefig('puta.png')
+        plt.savefig('AnalysisPlot.png', bbox_inches='tight')
     # route functions
 
     def getNetwork(self):
@@ -631,8 +614,10 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
     def selectClickTool(self):
         self.canvas.setMapTool(self.emitPoint)
 
-    def getData(self):
-        print("Nice Click")
+    def loadPlot(self):
+        label = self.label
+        pixmap = QPixmap('AnalysisPlot.png')
+        label.setPixmap(pixmap)
 
     def getPoint(self, mapPoint, mouseButton):
 
@@ -642,7 +627,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
             print("got demand")
             print(mapPoint.x())
             print(mapPoint.y())
-        iterations = demandLayer.getFeatures()
+
         demand = 0.0
         income = 0.0
         #for feature in iterations:
