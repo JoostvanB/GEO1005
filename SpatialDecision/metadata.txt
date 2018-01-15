@@ -7,17 +7,17 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=SDSS Template
+name=GeoCharge Planner
 qgisMinimumVersion=2.0
-description=This is a SDSS template for the GEO1005 course
+description=The planner uses this app to determine the best location for additional charging spots in the future. The app needs data from a navigation app (for example PlugShare) as an input. The planner sees a map with the places where people want to go and the amount of available charging spots (see example picture of application screen below). The planner can see several layers to identify the critical spots to help him decide where to put new charging stations.
 version=0.1
-author=Jorge Gil, TU Delft
+author=Juan and Joost 
 email=j.a.lopesgil@tudelft.nl
 
-about=This plugin is a template Spatial Decision Support System, to be developed as a project for the GEO1005 course. It provides example of basic functionality to deal with data, spatial analysis and data visualisation.
+about=The planner uses this app to determine the best location for additional charging spots in the future. The app needs data from a navigation app (for example PlugShare) as an input. The planner sees a map with the places where people want to go and the amount of available charging spots (see example picture of application screen below). The planner can see several layers to identify the critical spots to help him decide where to put new charging stations.
 
-tracker=https://github.com/jorgegil/GEO1005/issues
-repository=https://github.com/jorgegil/GEO1005
+tracker=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11/issues
+repository=https://github.com/JoostvanB/GEO1005-GeoCharge-Group-11
 # End of mandatory metadata
 
 # Recommended items:

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>394</width>
+    <width>400</width>
     <height>540</height>
    </rect>
   </property>
@@ -20,7 +20,7 @@
    <string>SDSS Template</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
-   <layout class="QGridLayout" name="gridLayout_2">
+   <layout class="QFormLayout" name="formLayout_2">
     <item row="0" column="0">
      <widget class="QTabWidget" name="sampleWidgets">
       <property name="sizePolicy">
@@ -72,16 +72,6 @@ p, li { white-space: pre-wrap; }
            <string>Load Project</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Select Active Scenario:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="activeScenarioCombo"/>
         </item>
         <item>
          <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,0">
@@ -214,8 +204,8 @@ p, li { white-space: pre-wrap; }
        <attribute name="title">
         <string>Scenarios</string>
        </attribute>
-       <layout class="QFormLayout" name="formLayout_2">
-        <item row="0" column="0" colspan="2">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0" colspan="3">
          <widget class="QTextBrowser" name="textBrowser">
           <property name="html">
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -234,51 +224,72 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
+        <item row="1" column="0">
          <widget class="QPushButton" name="createScenarioButton">
           <property name="text">
            <string>Create New Scenario</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
+        <item row="1" column="1">
          <widget class="QPushButton" name="addPointsButton">
           <property name="text">
            <string>Add Points</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
+        <item row="1" column="2">
          <widget class="QPushButton" name="deletePointsButton">
           <property name="text">
            <string>Delete Points</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
+        <item row="2" column="0">
+         <widget class="QPushButton" name="deleteScenarioButton">
+          <property name="text">
+           <string>Delete Scenario</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
          <widget class="QLabel" name="label_2">
           <property name="text">
            <string>Select Active Scenario:</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
+        <item row="3" column="1">
          <widget class="QComboBox" name="activeScenarioCombo_2"/>
         </item>
-        <item row="5" column="0">
+        <item row="3" column="2">
+         <widget class="QPushButton" name="turnVisibilityButton">
+          <property name="text">
+           <string>Turn Visibility</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
          <widget class="QLabel" name="label_5">
           <property name="text">
            <string>Charging spots list:</string>
           </property>
          </widget>
         </item>
-        <item row="6" column="0" colspan="2">
+        <item row="5" column="0" colspan="3">
          <widget class="QTableView" name="chargingSpotsTable"/>
         </item>
-        <item row="8" column="0" colspan="2">
-         <widget class="QPushButton" name="pushButton_2">
+        <item row="6" column="0">
+         <widget class="QPushButton" name="saveScenariosButton">
           <property name="text">
            <string>Save Scenarios</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" colspan="2">
+         <widget class="QPushButton" name="confirmPointsButton">
+          <property name="text">
+           <string>Confirm</string>
           </property>
          </widget>
         </item>
@@ -302,13 +313,12 @@ p, li { white-space: pre-wrap; }
        <attribute name="title">
         <string>Reporting</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch=""/>
+       <layout class="QVBoxLayout" name="verticalLayout"/>
       </widget>
      </widget>
     </item>
    </layout>
   </widget>
  </widget>
- <resources/>
  <connections/>
 </ui>
