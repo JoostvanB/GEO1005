@@ -28,7 +28,7 @@
       <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Checked" id="Raster_clipped_200m_kopie20180110123427857" source="C:/Users/joost/Documents/git/GEO1005-GeoCharge-Group-11/QGIS files/outputs/raster_clipped_200m.shp" name="Average Income">
         <customproperties/>
       </layer-tree-layer>
-      <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Checked" id="Telling20180115233959611" source="C:/Users/joost/.qgis2/processing/outputs/Counting_area_POI.shp" name="Electric Vehicle Demand">
+      <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Checked" id="Telling20180115233959611" source="C:/Users/joost/Documents/git/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Counting_area_POI.shp" name="Electric Vehicle Demand">
         <customproperties/>
       </layer-tree-layer>
       <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Selection_4_neighbourhoods20171214161122939" source="C:/Users/joost/Documents/git/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Selection_4_neighbourhoods.shx" name="Roads">
@@ -4316,7 +4316,7 @@ def my_form_open(dialog, layer, feature):
     </maplayer>
     <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Polygon" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
       <id>Telling20180115233959611</id>
-      <datasource>../../../../.qgis2/processing/outputs/Counting_area_POI.shp</datasource>
+      <datasource>./outputs/Counting_area_POI.shp</datasource>
       <keywordList>
         <value></value>
       </keywordList>
