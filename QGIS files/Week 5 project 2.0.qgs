@@ -5,9 +5,9 @@
   <evaluateDefaultValues active="0"/>
   <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="">
     <customproperties/>
-    <layer-tree-group expanded="0" checked="Qt::PartiallyChecked" name="Scenarios">
+    <layer-tree-group expanded="0" checked="Qt::Unchecked" name="Scenarios">
       <customproperties/>
-      <layer-tree-layer expanded="1" providerKey="memory" checked="Qt::Checked" id="1123320180115004852632" source="memory?geometry=Point&amp;field=ID:(0,0):string(255,0)&amp;field=lat:(0,0):string(255,0)&amp;field=lon:(0,0):string(255,0)&amp;field=Demand:(0,0):string(255,0)&amp;field=Avg_Income:(0,0):string(255,0)" name="11233">
+      <layer-tree-layer expanded="1" providerKey="memory" checked="Qt::Unchecked" id="1123320180115004852632" source="memory?geometry=Point&amp;field=ID:(0,0):string(255,0)&amp;field=lat:(0,0):string(255,0)&amp;field=lon:(0,0):string(255,0)&amp;field=Demand:(0,0):string(255,0)&amp;field=Avg_Income:(0,0):string(255,0)" name="11233">
         <customproperties/>
       </layer-tree-layer>
       <layer-tree-layer expanded="1" providerKey="memory" checked="Qt::Unchecked" id="asdf20180113155424662" source="memory?geometry=Point&amp;field=ID:(0,0):string(255,0)&amp;field=lat:(0,0):string(255,0)&amp;field=lon:(0,0):string(255,0)&amp;field=Demand:(0,0):string(255,0)&amp;field=Avg_Income:(0,0):string(255,0)" name="asdf">
@@ -17,7 +17,7 @@
         <customproperties/>
       </layer-tree-layer>
     </layer-tree-group>
-    <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="Background Data">
+    <layer-tree-group expanded="1" checked="Qt::Checked" name="Background Data">
       <customproperties/>
       <layer-tree-layer expanded="1" providerKey="delimitedtext" checked="Qt::Checked" id="Charging_Spots_correct_CRS20180115233255232" source="file:///C:/Users/joost/Documents/git/GEO1005-GeoCharge-Group-11/QGIS%20files/outputs/Charging_Spots_correct_CRS.csv?type=csv&amp;xField=LON&amp;yField=LAT&amp;spatialIndex=yes&amp;subsetIndex=no&amp;watchFile=no" name="Charging_Spots_correct_CRS">
         <customproperties/>
@@ -25,10 +25,10 @@
       <layer-tree-layer expanded="0" providerKey="delimitedtext" checked="Qt::Checked" id="POI_correct_CRS20180115233306706" source="file:///C:/Users/joost/Documents/git/GEO1005-GeoCharge-Group-11/QGIS%20files/outputs/POI_correct_CRS.csv?type=csv&amp;xField=X&amp;yField=Y&amp;spatialIndex=yes&amp;subsetIndex=no&amp;watchFile=no" name="POI_correct_CRS">
         <customproperties/>
       </layer-tree-layer>
-      <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Unchecked" id="Raster_clipped_200m_kopie20180110123427857" source="C:/Users/joost/Documents/git/GEO1005-GeoCharge-Group-11/QGIS files/outputs/raster_clipped_200m.shp" name="Average Income">
+      <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Checked" id="Raster_clipped_200m_kopie20180110123427857" source="C:/Users/joost/Documents/git/GEO1005-GeoCharge-Group-11/QGIS files/outputs/raster_clipped_200m.shp" name="Average Income">
         <customproperties/>
       </layer-tree-layer>
-      <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Checked" id="Telling20180115233959611" source="C:\Users\joost\.qgis2\\processing\outputs\Counting_area_POI.shp" name="Electric Vehicle Demand">
+      <layer-tree-layer expanded="0" providerKey="ogr" checked="Qt::Checked" id="Telling20180115233959611" source="C:/Users/joost/.qgis2/processing/outputs/Counting_area_POI.shp" name="Electric Vehicle Demand">
         <customproperties/>
       </layer-tree-layer>
       <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="Selection_4_neighbourhoods20171214161122939" source="C:/Users/joost/Documents/git/GEO1005-GeoCharge-Group-11/QGIS files/outputs/Selection_4_neighbourhoods.shx" name="Roads">
@@ -99,9 +99,9 @@
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Joost20180113151641710"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Raster20180114163753138"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt20180110134948567"/>
+      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Demand_Income_POI_Charging_generated_from_QGIS20180115233357942"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="asdf20180113155424662"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Raster_clipped_200m_kopie20180110123427857"/>
-      <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Demand_Income_POI_Charging_generated_from_QGIS20180115233357942"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="temporary_layer_POI20180110134816933"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_Rotterdam_Data20171214163609514"/>
       <layer_coordinate_transform destAuthId="EPSG:28992" srcAuthId="EPSG:28992" srcDatumTransform="-1" destDatumTransform="-1" layerid="Geclipt_Terrein20171214161058996"/>
@@ -146,10 +146,10 @@
     </custom-order>
   </layer-tree-canvas>
   <legend updateDrawingOrder="true">
-    <legendgroup open="false" checked="Qt::PartiallyChecked" name="Scenarios">
-      <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="11233" showFeatureCount="0">
+    <legendgroup open="false" checked="Qt::Unchecked" name="Scenarios">
+      <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="11233" showFeatureCount="0">
         <filegroup open="true" hidden="false">
-          <legendlayerfile isInOverview="0" layerid="1123320180115004852632" visible="1"/>
+          <legendlayerfile isInOverview="0" layerid="1123320180115004852632" visible="0"/>
         </filegroup>
       </legendlayer>
       <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="asdf" showFeatureCount="0">
@@ -163,7 +163,7 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup open="true" checked="Qt::PartiallyChecked" name="Background Data">
+    <legendgroup open="true" checked="Qt::Checked" name="Background Data">
       <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="Charging_Spots_correct_CRS" showFeatureCount="0">
         <filegroup open="true" hidden="false">
           <legendlayerfile isInOverview="0" layerid="Charging_Spots_correct_CRS20180115233255232" visible="1"/>
@@ -174,9 +174,9 @@
           <legendlayerfile isInOverview="0" layerid="POI_correct_CRS20180115233306706" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="Average Income" showFeatureCount="0">
+      <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="Average Income" showFeatureCount="0">
         <filegroup open="false" hidden="false">
-          <legendlayerfile isInOverview="0" layerid="Raster_clipped_200m_kopie20180110123427857" visible="0"/>
+          <legendlayerfile isInOverview="0" layerid="Raster_clipped_200m_kopie20180110123427857" visible="1"/>
         </filegroup>
       </legendlayer>
       <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="Electric Vehicle Demand" showFeatureCount="0">
@@ -573,6 +573,7 @@
       <SingleCategoryDiagramRenderer diagramType="Histogram" sizeLegend="0" attributeLegend="1">
         <DiagramCategory penColor="#000000" labelPlacementMethod="XHeight" penWidth="0" diagramOrientation="Up" sizeScale="0,0,0,0,0,0" minimumSize="0" barWidth="5" penAlpha="255" maxScaleDenominator="1e+08" backgroundColor="#ffffff" transparency="0" width="15" scaleDependency="Area" backgroundAlpha="255" angleOffset="1440" scaleBasedVisibility="0" enabled="0" height="15" lineSizeScale="0,0,0,0,0,0" sizeType="MM" lineSizeType="MM" minScaleDenominator="inf">
           <fontProperties description="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" style=""/>
+          <attribute field="" color="#000000" label=""/>
         </DiagramCategory>
         <symbol alpha="1" clip_to_extent="1" type="marker" name="sizeSymbol">
           <layer pass="0" class="SimpleMarker" locked="0">
@@ -598,7 +599,7 @@
         </symbol>
       </SingleCategoryDiagramRenderer>
       <DiagramLayerSettings yPosColumn="-1" showColumn="-1" linePlacementFlags="10" placement="0" dist="0" xPosColumn="-1" priority="0" obstacle="0" zIndex="0" showAll="1"/>
-      <annotationform></annotationform>
+      <annotationform>.</annotationform>
       <aliases>
         <alias field="ID" index="0" name=""/>
         <alias field="LON" index="1" name=""/>
@@ -608,7 +609,7 @@
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
       <attributeactions default="-1"/>
-      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="-16777216">
+      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
         <columns>
           <column width="-1" hidden="0" type="field" name="ID"/>
           <column width="-1" hidden="0" type="field" name="LON"/>
@@ -617,10 +618,10 @@
           <column width="-1" hidden="1" type="actions"/>
         </columns>
       </attributetableconfig>
-      <editform></editform>
+      <editform>.</editform>
       <editforminit/>
       <editforminitcodesource>0</editforminitcodesource>
-      <editforminitfilepath></editforminitfilepath>
+      <editforminitfilepath>.</editforminitfilepath>
       <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
 """
 Formulieren van QGIS kunnen een functie voor Python hebben die wordt aangeroepen wanneer het formulier wordt geopend.
@@ -2377,6 +2378,7 @@ def my_form_open(dialog, layer, feature):
       <SingleCategoryDiagramRenderer diagramType="Histogram" sizeLegend="0" attributeLegend="1">
         <DiagramCategory penColor="#000000" labelPlacementMethod="XHeight" penWidth="0" diagramOrientation="Up" sizeScale="0,0,0,0,0,0" minimumSize="0" barWidth="5" penAlpha="255" maxScaleDenominator="1e+08" backgroundColor="#ffffff" transparency="0" width="15" scaleDependency="Area" backgroundAlpha="255" angleOffset="1440" scaleBasedVisibility="0" enabled="0" height="15" lineSizeScale="0,0,0,0,0,0" sizeType="MM" lineSizeType="MM" minScaleDenominator="inf">
           <fontProperties description="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" style=""/>
+          <attribute field="" color="#000000" label=""/>
         </DiagramCategory>
         <symbol alpha="1" clip_to_extent="1" type="marker" name="sizeSymbol">
           <layer pass="0" class="SimpleMarker" locked="0">
@@ -6187,6 +6189,7 @@ def my_form_open(dialog, layer, feature):
       <SingleCategoryDiagramRenderer diagramType="Histogram" sizeLegend="0" attributeLegend="1">
         <DiagramCategory penColor="#000000" labelPlacementMethod="XHeight" penWidth="0" diagramOrientation="Up" sizeScale="0,0,0,0,0,0" minimumSize="0" barWidth="5" penAlpha="255" maxScaleDenominator="1e+08" backgroundColor="#ffffff" transparency="0" width="15" scaleDependency="Area" backgroundAlpha="255" angleOffset="1440" scaleBasedVisibility="0" enabled="0" height="15" lineSizeScale="0,0,0,0,0,0" sizeType="MM" lineSizeType="MM" minScaleDenominator="inf">
           <fontProperties description="MS Shell Dlg 2,7.5,-1,5,50,0,0,0,0,0" style=""/>
+          <attribute field="" color="#000000" label=""/>
         </DiagramCategory>
         <symbol alpha="1" clip_to_extent="1" type="marker" name="sizeSymbol">
           <layer pass="0" class="SimpleMarker" locked="0">
@@ -6575,16 +6578,16 @@ def my_form_open(dialog, layer, feature):
       <DefaultSnapToleranceUnit type="int">2</DefaultSnapToleranceUnit>
       <LayerSnappingList type="QStringList">
         <value>1123320180115004852632</value>
+        <value>Charging_Spots_correct_CRS20180115233255232</value>
         <value>Geclipt_Waterdeel20171214161109146</value>
         <value>Geclipt_spoorbaandeel20171214161042294</value>
         <value>Joost20180113151641710</value>
+        <value>POI_correct_CRS20180115233306706</value>
         <value>Raster_clipped_200m_kopie20180110123427857</value>
         <value>Selection_4_neighbourhoods20171214161122939</value>
+        <value>Telling20180115233959611</value>
         <value>asdf20180113155424662</value>
         <value>kj20180113031744527</value>
-        <value>Charging_Spots_correct_CRS20180115233255232</value>
-        <value>POI_correct_CRS20180115233306706</value>
-        <value>Telling20180115233959611</value>
       </LayerSnappingList>
       <LayerSnappingEnabledList type="QStringList">
         <value>disabled</value>
