@@ -21,7 +21,7 @@
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QFormLayout" name="formLayout_2">
-    <item row="0" column="1">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="sampleWidgets">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
@@ -205,6 +205,44 @@ p, li { white-space: pre-wrap; }
         <string>Scenarios</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="0">
+         <widget class="QPushButton" name="createScenarioButton">
+          <property name="text">
+           <string>Create New Scenario</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QPushButton" name="deletePointsButton">
+          <property name="text">
+           <string>Delete Points</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="activeScenarioCombo_2"/>
+        </item>
+        <item row="3" column="2">
+         <widget class="QPushButton" name="turnVisibilityButton">
+          <property name="text">
+           <string>Turn Visibility</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="deleteScenarioButton">
+          <property name="text">
+           <string>Delete Scenario</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" colspan="2">
+         <widget class="QPushButton" name="confirmPointsButton">
+          <property name="text">
+           <string>Confirm</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0" colspan="3">
          <widget class="QTextBrowser" name="textBrowser">
           <property name="html">
@@ -224,48 +262,10 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="createScenarioButton">
-          <property name="text">
-           <string>Create New Scenario</string>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="1">
          <widget class="QPushButton" name="addPointsButton">
           <property name="text">
            <string>Add Points</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QPushButton" name="deletePointsButton">
-          <property name="text">
-           <string>Delete Points</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="deleteScenarioButton">
-          <property name="text">
-           <string>Delete Scenario</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Select Active Scenario:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QComboBox" name="activeScenarioCombo_2"/>
-        </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="turnVisibilityButton">
-          <property name="text">
-           <string>Turn Visibility</string>
           </property>
          </widget>
         </item>
@@ -276,20 +276,20 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="5" column="0" colspan="3">
-         <widget class="QTableView" name="chargingSpotsTable"/>
-        </item>
-        <item row="6" column="0">
-         <widget class="QPushButton" name="saveScenariosButton">
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Save Scenarios</string>
+           <string>Select Active Scenario:</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1" colspan="2">
-         <widget class="QPushButton" name="confirmPointsButton">
+        <item row="5" column="0" colspan="3">
+         <widget class="QTableWidget" name="tableWidget"/>
+        </item>
+        <item row="6" column="0" colspan="3">
+         <widget class="QPushButton" name="saveScenariosButton">
           <property name="text">
-           <string>Confirm</string>
+           <string>Save Scenarios</string>
           </property>
          </widget>
         </item>
@@ -299,18 +299,52 @@ p, li { white-space: pre-wrap; }
        <attribute name="title">
         <string>Results</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_4">
+       <layout class="QFormLayout" name="formLayout_3">
         <item row="0" column="0">
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Button 1 ID</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="labelButton2">
+          <property name="text">
+           <string>Button 2 ID</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
+         <widget class="QLineEdit" name="lineEditButton1"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="lineEditButton2"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="addAnalyzeButton">
+          <property name="text">
+           <string>Add Button to Analysis</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="confirmAnalysisButton">
+          <property name="text">
+           <string>Confirm Analysis Button</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
          <widget class="QPushButton" name="pushButton">
           <property name="text">
            <string>Analize</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="labelButton1">
+          <property name="text">
+           <string>TextLabel</string>
           </property>
          </widget>
         </item>

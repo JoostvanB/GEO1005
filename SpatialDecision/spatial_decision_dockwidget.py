@@ -45,6 +45,7 @@ import os
 import os.path
 import random
 import numpy as np
+import pandas as pd
 import csv
 import time
 
@@ -83,13 +84,14 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         self.iface = iface
         self.canvas = self.iface.mapCanvas()
         self.npuntos = 0
-        self.userTool = self.canvas.mapTool()
-        self.Demand = [0, 0, 0, 0]
+        self.pointsID = 0
+        self.userTool = QgsMapToolPan(self.canvas)
+
         # set up GUI operation signals
         # data
 
         self.loadDataButton.clicked.connect(self.loadData)
-        #self.saveScenarioButton.clicked.connect(self.saveScenario)
+        self.saveScenariosButton.clicked.connect(self.saveScenario)
         self.checkBoxDemand.stateChanged.connect(lambda: self.updateLayers(self.checkBoxDemand.text(),self.checkBoxDemand.isChecked()))
         self.checkBoxIncome.stateChanged.connect(lambda: self.updateLayers(self.checkBoxIncome.text(), self.checkBoxIncome.isChecked()))
         self.checkBoxPOI.stateChanged.connect(lambda: self.updateLayers(self.checkBoxPOI.text(), self.checkBoxPOI.isChecked()))
@@ -102,11 +104,17 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
         self.turnVisibilityButton.clicked.connect(self.turnVisibility)
         self.addPointsButton.clicked.connect(self.selectClickTool)
         self.confirmPointsButton.clicked.connect(self.enterPoi)
+        self.deletePointsButton.clicked.connect(self.deletePoint)
+        self.addAnalyzeButton.clicked.connect(self.setPointAnalysisTool)
         # analysis
         self.emitPoint = QgsMapToolEmitPoint(self.canvas)
         self.emitPoint.canvasClicked.connect(self.getPoint)
         self.pushButton.clicked.connect(self.loadPlot)
-
+        self.deletePointTool = QgsMapToolEmitPoint(self.canvas)
+        self.deletePointTool.canvasClicked.connect(self.deletePointReal)
+        self.activeScenarioCombo_2.currentIndexChanged.connect(self.updateListOfScenarios)
+        self.addPointAnalysisTool = QgsMapToolEmitPoint(self.canvas)
+        self.addPointAnalysisTool.canvasClicked.connect(self.getPointAnalysis)
         # initialisation
         self.loadData()
 
@@ -121,21 +129,22 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
     #This method loads the project which includes background data and scenarios
     def loadData(self):
         new_file = False
-        if not self.initiated:
-            scenario_file = "Week 5 project 2.0.qgs"
-            print(scenario_file)
-            # check if file exists
-            if os.path.isfile(scenario_file):
-                self.iface.addProject(scenario_file)
-            else:
-                last_dir = uf.getLastDir("SpatialDecision")
-                new_file = QtGui.QFileDialog.getOpenFileName(self, "", last_dir, "(*.qgs)")
-                if new_file:
-                    self.iface.addProject(unicode(new_file))
+        scenario_file = "Week 5 project 2.0.qgs"
+        print(scenario_file)
+        # check if file exists
+        if os.path.isfile(scenario_file):
+            self.iface.addProject(scenario_file)
+        else:
+            last_dir = uf.getLastDir("SpatialDecision")
+            new_file = QtGui.QFileDialog.getOpenFileName(self, "", last_dir, "(*.qgs)")
+            if new_file:
+                self.iface.addProject(unicode(new_file))
 
         root = QgsProject.instance().layerTreeRoot()
         found = False
         legend = self.iface.legendInterface()
+        if new_file:
+            self.activeScenarioCombo_2.clear()
         for child in root.children():
             if isinstance(child, QgsLayerTreeGroup):
                 if child.name() == "Scenarios":
@@ -161,6 +170,28 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
             scenarioGroup = root.insertGroup(0, "Scenarios")
         self.initiated = True
 
+        layer = uf.getLegendLayerByName(self.iface, self.activeScenarioCombo_2.currentText())
+        if layer:
+            QgsVectorFileWriter.writeAsVectorFormat(layer, r'attrtable.csv', "utf-8", None, "CSV")
+            self.tableWidget.clear()
+            self.tableWidget.setRowCount(0)
+            self.tableWidget.setColumnCount(0)
+            rel = pd.read_csv('attrtable.csv')
+            self.tableWidget.insertRow(0)
+            headers = list(rel)
+            for i in headers:
+                item = QtGui.QTableWidgetItem()
+                item.setText(i)
+                self.tableWidget.insertColumn(self.tableWidget.columnCount())
+                self.tableWidget.setItem(0, self.tableWidget.columnCount() - 1, item)
+
+            for index, row in rel.iterrows():
+                self.tableWidget.insertRow(self.tableWidget.rowCount())
+                for j in range(len(row)):
+                    item = QtGui.QTableWidgetItem()
+                    item.setText(str(row[j]))
+                    self.tableWidget.setItem(self.tableWidget.rowCount() - 1, j, item)
+
 
     def createScenario(self):
         nameScenario, okPressed = QtGui.QInputDialog.getText(self, "Create Scenario", "Please input the new scenario name:")
@@ -170,7 +201,7 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
             layerData = newLayer.dataProvider()
             layerData.addAttributes([QgsField("ID", QVariant.Int), QgsField("x", QVariant.Double),
                                           QgsField("y", QVariant.Double), QgsField("Demand", QVariant.Double),
-                                          QgsField("Avg_Income", QVariant.Double)])  #
+                                          QgsField("Avg_Income", QVariant.Double), QgsField("Charging_a", QVariant.Double), QgsField("POI_area", QVariant.Double)])  #
             newLayer.updateFields()
             newLayer.commitChanges()
             root = QgsProject.instance().layerTreeRoot()
@@ -185,6 +216,26 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
                 self.activeScenarioCombo_2.model().item(0).setForeground(QtGui.QColor('green'))
             else:
                 self.activeScenarioCombo_2.model().item(0).setForeground(QtGui.QColor('red'))
+            if newLayer:
+                QgsVectorFileWriter.writeAsVectorFormat(newLayer, r'attrtable.csv', "utf-8", None, "CSV")
+                self.tableWidget.clear()
+                self.tableWidget.setRowCount(0)
+                self.tableWidget.setColumnCount(0)
+                rel = pd.read_csv('attrtable.csv')
+                self.tableWidget.insertRow(0)
+                headers = list(rel)
+                for i in headers:
+                    item = QtGui.QTableWidgetItem()
+                    item.setText(i)
+                    self.tableWidget.insertColumn(self.tableWidget.columnCount())
+                    self.tableWidget.setItem(0, self.tableWidget.columnCount() - 1, item)
+
+                for index, row in rel.iterrows():
+                    self.tableWidget.insertRow(self.tableWidget.rowCount())
+                    for j in range(len(row)):
+                        item = QtGui.QTableWidgetItem()
+                        item.setText(str(row[j]))
+                        self.tableWidget.setItem(self.tableWidget.rowCount() - 1, j, item)
 
     def deleteScenario(self):
         layerName = self.activeScenarioCombo_2.currentText()
@@ -194,6 +245,33 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
             QgsMapLayerRegistry.instance().removeMapLayer(layer.id())
             self.activeScenarioCombo_2.removeItem(layerIndex)
             self.activeScenarioCombo_2.setCurrentIndex(0)
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(0)
+        layer = uf.getLegendLayerByName(self.iface, layerName)
+        if layer:
+            QgsVectorFileWriter.writeAsVectorFormat(layer, r'attrtable.csv', "utf-8", None, "CSV")
+            self.tableWidget.clear()
+            self.tableWidget.setRowCount(0)
+            self.tableWidget.setColumnCount(0)
+            rel = pd.read_csv('attrtable.csv')
+            self.tableWidget.insertRow(0)
+            headers = list(rel)
+            for i in headers:
+                item = QtGui.QTableWidgetItem()
+                item.setText(i)
+                self.tableWidget.insertColumn(self.tableWidget.columnCount())
+                self.tableWidget.setItem(0, self.tableWidget.columnCount() - 1, item)
+
+            for index, row in rel.iterrows():
+                self.tableWidget.insertRow(self.tableWidget.rowCount())
+                for j in range(len(row)):
+                    item = QtGui.QTableWidgetItem()
+                    item.setText(str(row[j]))
+                    self.tableWidget.setItem(self.tableWidget.rowCount() - 1, j, item)
+
+
+
+
     def turnVisibility(self):
         index = self.activeScenarioCombo_2.currentIndex()
         text = self.activeScenarioCombo_2.currentText()
@@ -207,7 +285,8 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
                 self.activeScenarioCombo_2.model().item(int(index)).setForeground(QtGui.QColor('red'))
 
     def saveScenario(self):
-        self.iface.actionSaveProject()
+
+        self.iface.mainWindow().findChild(QtGui.QAction, 'mActionSaveProject').trigger()
 
     def updateLayers(self, layerText, status):
         layers = uf.getLegendLayers(self.iface, 'all', 'all')
@@ -232,43 +311,30 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
 
 
 
-    def updateListOfScenarios(self, layer):
-        self.selectAttributeCombo.clear()
+    def updateListOfScenarios(self):
+        layer = uf.getLegendLayerByName(self.iface, self.activeScenarioCombo_2.currentText())
         if layer:
-            self.clearReport()
-            self.clearChart()
-            fields = uf.getFieldNames(layer)
-            if fields:
-                self.selectAttributeCombo.addItems(fields)
-                self.setSelectedAttribute()
-                # send list to the report list window
-                self.updateReport(fields)
+            QgsVectorFileWriter.writeAsVectorFormat(layer, r'attrtable.csv', "utf-8", None, "CSV")
+            self.tableWidget.clear()
+            self.tableWidget.setRowCount(0)
+            self.tableWidget.setColumnCount(0)
+            rel = pd.read_csv('attrtable.csv')
+            self.tableWidget.insertRow(0)
+            headers = list(rel)
+            for i in headers:
+                item = QtGui.QTableWidgetItem()
+                item.setText(i)
+                self.tableWidget.insertColumn(self.tableWidget.columnCount())
+                self.tableWidget.setItem(0, self.tableWidget.columnCount() - 1, item)
 
+            for index, row in rel.iterrows():
+                self.tableWidget.insertRow(self.tableWidget.rowCount())
+                for j in range(len(row)):
+                    item = QtGui.QTableWidgetItem()
+                    item.setText(str(row[j]))
+                    self.tableWidget.setItem(self.tableWidget.rowCount() - 1, j, item)
 
-
-
-    def canvasReleaseEvent(self, event):
-        self.lineEdit.setText("Hola")
-        layers = uf.getLegendLayers(self.iface, 'all', 'all')
-        # self.selectLayerCombo.clear()
-        # you neet to set which layers will you identify here which is in your case is just 'parish_layer'
-        listOfFeatures = []
-        for i in layers:
-            listOfFeatures.append(QgsMapToolIdentify(self.canvas).identify(event.x(), event.y(), [i],QgsMapToolIdentify.TopDownStopAtFirst))
-        for features in listOfFeatures:
-            if len(features) > 0:
-            # here you get the selected feature
-                feature = features[0].mFeature
-            # And here you get the attribute's value
-                try:
-                    parishName = self.lineEdit.setText(feature["Demand"])
-                except:
-                    pass
-        x = event.pos().x()
-        y = event.pos().y()
-        point = self.canvas.getCoordinateTransform().toMapCoordinates(x, y)
-
-#######
+    #######
 #    Analysis functions
 #######
 
@@ -622,64 +688,97 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
     def getPoint(self, mapPoint, mouseButton):
 
         layer = uf.getLegendLayerByName(self.iface, self.activeScenarioCombo_2.currentText())
+        self.iface.setActiveLayer(layer)
         demandLayer = uf.getLegendLayerByName(self.iface, "Electric Vehicle Demand")
-        if demandLayer:
-            print("got demand")
-            print(mapPoint.x())
-            print(mapPoint.y())
-
         demand = 0.0
         income = 0.0
-        #for feature in iterations:
-        #    if (mapPoint.x() > feature.xmin) and (mapPoint.x() <= feature.xmax):
-        #        if (mapPoint.y() > feature.ymin) and (mapPoint.y() <= feature.ymax):
-        #            demand = feature.Demand
-        #            income = feature.Avg_Income
+        iterations = demandLayer.getFeatures()
 
-        #if len(features) > 0:
-            # here you get the selected feature
-           ## print("cool")
-           # feature = features[0].mFeature
-            # And here you get the attribute's value
-           ## parishName = feature['Demand']
-           # print(str(parishName))
+        for feature in iterations:
+            attrs = feature.attributes()
+            if (mapPoint.x() > float(attrs[1])) and (mapPoint.x() <= float(attrs[2])):
+                if (mapPoint.y() > float(attrs[3])) and (mapPoint.y() <= float(attrs[4])):
+                    demand = float(attrs[5])
+                    income = float(attrs[6])
+                    charga = float(attrs[7])
+                    npoi = float(attrs[8])
+        poiLayer = uf.getLegendLayerByName(self.iface, "Points Of Interest")
+        iterationspoi = poiLayer.getFeatures()
+
         if QgsVectorDataProvider.AddFeatures:
             feat = QgsFeature(layer.pendingFields())
+            for field in layer.pendingFields():
+                print(field.name())
             # Or set a single attribute by key or by index:
-            feat.setAttribute('ID', 0.0)
-            feat.setAttribute('x', mapPoint.x())
-            feat.setAttribute('y', mapPoint.y())
-            feat.setAttribute('Demand', demand)
-            feat.setAttribute('Avg_Income', income)
+            feat.setAttribute(0, self.pointsID)
+            feat.setAttribute(1, mapPoint.x())
+            feat.setAttribute(2, mapPoint.y())
+            feat.setAttribute(3, demand)
+            feat.setAttribute(4, income)
+            feat.setAttribute(5, charga)
+            feat.setAttribute(6, npoi)
             feat.setGeometry(QgsGeometry.fromPoint(mapPoint))
             (res, outFeats) = layer.dataProvider().addFeatures([feat])
+        layer.updateFields()
+        layer.commitChanges()
+        self.canvas.refresh()
+        self.pointsID += 1
+        QgsVectorFileWriter.writeAsVectorFormat(layer, r'attrtable.csv', "utf-8", None, "CSV")
+        self.tableWidget.clear()
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(0)
+        rel = pd.read_csv('attrtable.csv')
+        self.tableWidget.insertRow(0)
+        headers = list(rel)
+        for i in headers:
+            item = QtGui.QTableWidgetItem()
+            item.setText(i)
+            self.tableWidget.insertColumn(self.tableWidget.columnCount())
+            self.tableWidget.setItem(0, self.tableWidget.columnCount() - 1, item)
+
+        for index, row in rel.iterrows():
+            self.tableWidget.insertRow(self.tableWidget.rowCount())
+            for j in range(len(row)):
+                item = QtGui.QTableWidgetItem()
+                item.setText(str(row[j]))
+                self.tableWidget.setItem(self.tableWidget.rowCount() - 1, j, item)
+
+    def deletePoint(self):
+        self.canvas.setMapTool(self.deletePointTool)
+
+    def deletePointReal(self, mapPoint, mouseButton):
+        layer = uf.getLegendLayerByName(self.iface, self.activeScenarioCombo_2.currentText())
+        iterations = layer.getFeatures()
+        for feature in iterations:
+            attrs = feature.attributes()
+            if (abs(mapPoint.x() - float(attrs[1])) < 50):
+                if (abs(mapPoint.y() - float(attrs[2])) < 50):
+                    print(feature.id())
+                    layer.dataProvider().deleteFeatures([feature.id()])
+
         layer.commitChanges()
         self.canvas.refresh()
 
-        # self.selectLayerCombo.clear()
-        # you neet to set which layers will you identify here which is in your case is just 'parish_layer'
-        #layer = None
-        #for lyr in QgsMapLayerRegistry.instance().mapLayers().values():
-        #    if lyr.name() == "Electric Vehicle Demand":
-        #        layer = lyr
-        #        break
+        QgsVectorFileWriter.writeAsVectorFormat(layer, r'attrtable.csv', "utf-8", None, "CSV")
+        self.tableWidget.clear()
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(0)
+        rel = pd.read_csv('attrtable.csv')
+        self.tableWidget.insertRow(0)
+        headers = list(rel)
+        for i in headers:
+            item = QtGui.QTableWidgetItem()
+            item.setText(i)
+            self.tableWidget.insertColumn(self.tableWidget.columnCount())
+            self.tableWidget.setItem(0, self.tableWidget.columnCount() - 1, item)
 
-        #features = QgsMapToolIdentify(self.canvas).identify(mapPoint.x(), mapPoint.y(), layer,
-        #                                                                   QgsMapToolIdentify.TopDownStopAtFirst)#
+        for index, row in rel.iterrows():
+            self.tableWidget.insertRow(self.tableWidget.rowCount())
+            for j in range(len(row)):
+                item = QtGui.QTableWidgetItem()
+                item.setText(str(row[j]))
+                self.tableWidget.setItem(self.tableWidget.rowCount() - 1, j, item)
 
-        #if len(features) > 0:
-            # here you get the selected feature
-            #feature = features[0].mFeature
-            # And here you get the attribute's value
-            #self.Demand[self.npuntos] = feature["Demand"]
-            #print(str(feature["Demand"]))
-        #x = mapPoint.x()
-        #y = mapPoint.y()
-        #point = self.canvas.getCoordinateTransform().toMapCoordinates(x, y)
-
-
-        #Get the click
-        #if mapPoint:
-        #    self.lineEdit.setText(mapPoint)
-            # here do something with the point
+    def setPointAnalysisTool(self):
+        self.canvas.setMapTool(self.deletePointTool)
 
