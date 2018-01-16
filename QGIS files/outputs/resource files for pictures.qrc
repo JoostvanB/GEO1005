@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="logo">
+    <file>Charging_car_logo_final.png</file>
+  </qresource>
+</RCC>
