@@ -780,5 +780,15 @@ class SpatialDecisionDockWidget(QtGui.QDockWidget, FORM_CLASS, QgsMapTool):
                 self.tableWidget.setItem(self.tableWidget.rowCount() - 1, j, item)
 
     def setPointAnalysisTool(self):
-        self.canvas.setMapTool(self.deletePointTool)
+        self.canvas.setMapTool(self.addPointAnalysisTool)
+
+    def getPointAnalysis(self, mapPoint, mouseButton):
+        layer = uf.getLegendLayerByName(self.iface, self.activeScenarioCombo_2.currentText())
+        iterations = layer.getFeatures()
+        for feature in iterations:
+            attrs = feature.attributes()
+            if (abs(mapPoint.x() - float(attrs[1])) < 50):
+                if (abs(mapPoint.y() - float(attrs[2])) < 50):
+                    self.lineEditButton1.setText(str(attrs[0]))
+
 

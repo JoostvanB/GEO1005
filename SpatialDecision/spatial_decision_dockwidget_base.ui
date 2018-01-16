@@ -361,6 +361,5 @@ p, li { white-space: pre-wrap; }
    </layout>
   </widget>
  </widget>
- <resources/>
  <connections/>
 </ui>
